@@ -21,9 +21,18 @@ public class DeployServer
 {
     public static void main(String[] args)
     {
+        /* EchoServer is our server implementation */
         EchoServer server = new EchoServer();
-        ServerDispatch dispatch = new ServerDispatch(8787, server);
 
+        /*
+           The ServerDispatch initializes the server, by
+           binding it to the requested port & sets up basic
+           NIO selectors, etc.
+
+           dispatch.startUp() starts the server on a new Thread
+        */
+
+        ServerDispatch dispatch = new ServerDispatch(8787, server);
         dispatch.startUp();
     }
 }

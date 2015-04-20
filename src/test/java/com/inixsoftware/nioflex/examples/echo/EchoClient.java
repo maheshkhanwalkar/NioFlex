@@ -36,12 +36,17 @@ public class EchoClient
         while(true)
         {
             ByteBuffer size = ByteBuffer.allocate(4);
+
+            //read input from stdin
             System.out.print("Client: ");
 
             String input = br.readLine();
+
+            //Q is to quit
             if(input.equals("Q"))
                 break;
 
+            //creates a ByteBuffer & put user input into it
             ByteBuffer text = ByteBuffer.allocate(input.length());
 
             size.putInt(input.length());
@@ -50,8 +55,18 @@ public class EchoClient
             text.put(input.getBytes(Charset.forName("UTF-8")));
             text.flip();
 
+            //write data to the server
+
+            //we first write the string's length
+            //then the actual string
+
             client.write(size);
             client.write(text);
+
+            //read the data from the server
+
+            //the server first sends the string's length
+            //then the actual string (just like we did)
 
             ByteBuffer lenBuf = ByteBuffer.allocate(4);
             client.read(lenBuf);
@@ -63,9 +78,12 @@ public class EchoClient
             client.read(resp);
 
             resp.flip();
+
+            //print out the message
             System.out.println("Server: " + new String(resp.array(), Charset.forName("UTF-8")));
         }
 
+        //clean-up
         client.close();
         br.close();
 

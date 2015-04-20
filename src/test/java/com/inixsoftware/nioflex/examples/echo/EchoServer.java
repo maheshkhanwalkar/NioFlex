@@ -34,11 +34,15 @@ public class EchoServer extends NIOServer
     @Override
     public void handleRead(SocketChannel client, SelectionKey key)
     {
+        //the client first writes the length of the string to read
+        //and then the actual string
+
         int bytesToRead = NIOUtils.readInt(client);
         String str = NIOUtils.readString(bytesToRead, client, Charset.forName("UTF-8"));
 
         System.out.println("Received: " + str);
 
+        //write back, first the string's length, then the actual string
         NIOUtils.writeInt(str.length(), client);
         NIOUtils.writeString(str, client, Charset.forName("UTF-8"));
     }
