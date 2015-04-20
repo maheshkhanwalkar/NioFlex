@@ -46,7 +46,7 @@ public class EchoClient
             if(input.equals("Q"))
                 break;
 
-            //creates a ByteBuffer & put user input into it
+            //creates a ByteBuffer & puts user input into it
             ByteBuffer text = ByteBuffer.allocate(input.length());
 
             size.putInt(input.length());
@@ -57,7 +57,7 @@ public class EchoClient
 
             //write data to the server
 
-            //we first write the string's length
+            //first write the string's length
             //then the actual string
 
             client.write(size);
@@ -66,7 +66,7 @@ public class EchoClient
             //read the data from the server
 
             //the server first sends the string's length
-            //then the actual string (just like we did)
+            //then the actual string
 
             ByteBuffer lenBuf = ByteBuffer.allocate(4);
             client.read(lenBuf);
