@@ -22,7 +22,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 
-public class FlexServer
+public class ServerDispatch
 {
     private int port;
     private ServerSocketChannel server;
@@ -30,7 +30,7 @@ public class FlexServer
     private Selector selector;
     private NIOServer nio;
 
-    public FlexServer(int port, NIOServer nio)
+    public ServerDispatch(int port, NIOServer nio)
     {
         this.port = port;
         this.nio = nio;

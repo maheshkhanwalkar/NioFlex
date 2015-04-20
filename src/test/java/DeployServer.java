@@ -14,7 +14,7 @@
     limitations under the License.
 */
 
-import com.inixsoftware.nioflex.nio.FlexServer;
+import com.inixsoftware.nioflex.nio.ServerDispatch;
 import echo.EchoServer;
 
 public class DeployServer
@@ -22,7 +22,7 @@ public class DeployServer
     public static void main(String[] args)
     {
         EchoServer server = new EchoServer();
-        FlexServer flex = new FlexServer(8787, server);
+        ServerDispatch flex = new ServerDispatch(8787, server);
 
         flex.startUp();
 

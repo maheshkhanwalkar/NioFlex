@@ -17,6 +17,7 @@ package echo;
 */
 
 import com.inixsoftware.nioflex.nio.NIOServer;
+import com.inixsoftware.nioflex.nio.utils.NIOUtils;
 
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
@@ -33,12 +34,12 @@ public class EchoServer extends NIOServer
     @Override
     public void handleRead(SocketChannel client, SelectionKey key)
     {
-        int bytesToRead = readInt(client);
-        String str = readString(bytesToRead, client, Charset.forName("UTF-8"));
+        int bytesToRead = NIOUtils.readInt(client);
+        String str = NIOUtils.readString(bytesToRead, client, Charset.forName("UTF-8"));
 
         System.out.println("Received: " + str);
 
-        writeInt(str.length(), client);
-        writeString(str, client, Charset.forName("UTF-8"));
+        NIOUtils.writeInt(str.length(), client);
+        NIOUtils.writeString(str, client, Charset.forName("UTF-8"));
     }
 }

@@ -67,6 +67,7 @@ public class EchoClient
         }
 
         client.close();
+        br.close();
 
     }
 }
