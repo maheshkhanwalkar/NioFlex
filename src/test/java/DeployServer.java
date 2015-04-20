@@ -15,7 +15,7 @@
 */
 
 import com.inixsoftware.nioflex.nio.ServerDispatch;
-import echo.EchoServer;
+import com.inixsoftware.nioflex.examples.echo.EchoServer;
 
 public class DeployServer
 {

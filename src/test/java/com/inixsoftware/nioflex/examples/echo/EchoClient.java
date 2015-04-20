@@ -1,4 +1,4 @@
-package echo;
+package com.inixsoftware.nioflex.examples.echo;
 
 /*
     Copyright 2015 Mahesh Khanwalkar
