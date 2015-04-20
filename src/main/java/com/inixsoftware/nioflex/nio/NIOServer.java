@@ -66,7 +66,7 @@ public abstract class NIOServer implements Runnable
         }
     }
 
-    protected byte[] readBytes(int len, SocketChannel client)
+    protected ByteBuffer readBuffer(int len, SocketChannel client)
     {
         ByteBuffer buffer = ByteBuffer.allocate(len);
 
@@ -77,13 +77,19 @@ public abstract class NIOServer implements Runnable
             while((read += client.read(buffer)) < len);
             buffer.flip();
 
-            return buffer.array();
-        } catch (IOException e)
+            return buffer;
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
         }
 
         return null;
+    }
+
+    protected byte[] readBytes(int len, SocketChannel client)
+    {
+        return readBuffer(len, client).array();
     }
 
     protected String readString(int len, SocketChannel client)
@@ -96,6 +102,11 @@ public abstract class NIOServer implements Runnable
     {
         byte[] bytes = readBytes(len, client);
         return new String(bytes, charset);
+    }
+
+    protected int readInt(SocketChannel client)
+    {
+        return readBuffer(4, client).getInt();
     }
 
     protected void writeBytes(byte[] bytes, SocketChannel client)
@@ -123,6 +134,23 @@ public abstract class NIOServer implements Runnable
     protected void writeString(String str, SocketChannel client, Charset charset)
     {
         writeBytes(str.getBytes(charset), client);
+    }
+
+    protected void writeInt(int num, SocketChannel client)
+    {
+        ByteBuffer buf = ByteBuffer.allocate(4);
+        buf.putInt(num);
+
+        buf.flip();
+
+        try
+        {
+            client.write(buf);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     /**

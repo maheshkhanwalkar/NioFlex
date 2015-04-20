@@ -15,14 +15,20 @@
 */
 
 import com.inixsoftware.nioflex.nio.FlexServer;
+import echo.EchoServer;
 
-public class DeployTest
+public class DeployServer
 {
     public static void main(String[] args)
     {
-        MyServer server = new MyServer();
+        EchoServer server = new EchoServer();
+        FlexServer flex = new FlexServer(8787, server);
+
+        flex.startUp();
+
+        /*MyServer server = new MyServer();
 
         FlexServer flex = new FlexServer(8585, server);
-        flex.startUp();
+        flex.startUp();*/
     }
 }

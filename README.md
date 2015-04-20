@@ -1,7 +1,7 @@
 # NioFlex
 Flexible NIO Server Building-Blocks for Java
 
-NioFlex allows developers to quickly create NIO-driven servers allowing for better scalibility
+NioFlex allows developers to quickly create NIO-driven servers allowing for better scalability
 than traditional blocking I/O servers. 
 
 The simple-to-use API allows rapid development that is hassle-free. It allows you to simply

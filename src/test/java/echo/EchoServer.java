@@ -1,3 +1,5 @@
+package echo;
+
 /*
     Copyright 2015 Mahesh Khanwalkar
 
@@ -18,27 +20,25 @@ import com.inixsoftware.nioflex.nio.NIOServer;
 
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
 
-public class MyServer extends NIOServer
+public class EchoServer extends NIOServer
 {
     @Override
     public void handleAccept(SocketChannel client, SelectionKey key)
     {
-        System.out.println("Client Connected!");
+        System.out.println("Echo Server has accepted a client!");
     }
 
     @Override
     public void handleRead(SocketChannel client, SelectionKey key)
     {
-        String str = readString(12, client);
-        if(str.equals("Hello world!"))
-        {
-            writeString("Hello client\n", client);
-        }
+        int bytesToRead = readInt(client);
+        String str = readString(bytesToRead, client, Charset.forName("UTF-8"));
 
-        if(str.equals("Hello again!"))
-        {
-            writeString("Hello again, client\n", client);
-        }
+        System.out.println("Received: " + str);
+
+        writeInt(str.length(), client);
+        writeString(str, client, Charset.forName("UTF-8"));
     }
 }
