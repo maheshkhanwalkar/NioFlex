@@ -143,7 +143,7 @@ public abstract class NIOServer implements Runnable
      */
     public abstract void handleRead(SocketChannel client, SelectionKey key);
 
-    public void run()
+    private void mainLoop()
     {
         while(true)
         {
@@ -156,6 +156,8 @@ public abstract class NIOServer implements Runnable
                 while(itr.hasNext())
                 {
                     SelectionKey key = itr.next();
+                    itr.remove();
+
                     if(key.isAcceptable())
                     {
                         SocketChannel client = server.accept();
@@ -184,6 +186,11 @@ public abstract class NIOServer implements Runnable
                 e.printStackTrace();
             }
         }
+    }
+
+    public void run()
+    {
+        mainLoop();
     }
 
     public void setPort(int port)
