@@ -9,7 +9,7 @@ rather you can focus on the server functionality
 
 The current version of NioFlex is 0.0.1-SNAPSHOT.
 
-Examples:
+**Examples:**
 
 1. Simple NIO-driven Echo server
    * [DeployServer.java](https://github.com/maheshkhanwalkar/NioFlex/blob/master/src/test/java/DeployServer.java)
