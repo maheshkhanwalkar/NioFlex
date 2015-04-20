@@ -27,11 +27,11 @@ public class MyClient
         BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
 
         bw.write("Hello world!");
+        bw.write("Hello again!");
+
         bw.flush();
 
-        //bw.write(0xEE);
-        //bw.flush();
-
+        System.out.println(br.readLine());
         System.out.println(br.readLine());
         //System.out.println(br.read());
 

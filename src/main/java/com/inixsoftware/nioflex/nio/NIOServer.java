@@ -17,10 +17,12 @@ package com.inixsoftware.nioflex.nio;
 */
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -57,9 +59,70 @@ public abstract class NIOServer implements Runnable
             handleRead(client, key);
 
             /* Re-enable read */
+
             key.interestOps(key.interestOps() ^ SelectionKey.OP_READ);
             selector.wakeup();
+
         }
+    }
+
+    protected byte[] readBytes(int len, SocketChannel client)
+    {
+        ByteBuffer buffer = ByteBuffer.allocate(len);
+
+        int read = 0;
+
+        try
+        {
+            while((read += client.read(buffer)) < len);
+            buffer.flip();
+
+            return buffer.array();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    protected String readString(int len, SocketChannel client)
+    {
+        byte[] bytes = readBytes(len, client);
+        return new String(bytes); //uses default encoding
+    }
+
+    protected String readString(int len, SocketChannel client, Charset charset)
+    {
+        byte[] bytes = readBytes(len, client);
+        return new String(bytes, charset);
+    }
+
+    protected void writeBytes(byte[] bytes, SocketChannel client)
+    {
+        ByteBuffer buf = ByteBuffer.allocate(bytes.length);
+        buf.put(bytes);
+
+        buf.flip();
+
+        try
+        {
+            client.write(buf);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    protected void writeString(String str, SocketChannel client)
+    {
+        writeBytes(str.getBytes(), client);
+    }
+
+    protected void writeString(String str, SocketChannel client, Charset charset)
+    {
+        writeBytes(str.getBytes(charset), client);
     }
 
     /**
@@ -72,7 +135,7 @@ public abstract class NIOServer implements Runnable
 
     /**
      * This method is invoked once data can be read from the client
-     * To prevent out-of-order reads, key.cancel() is called before it is passed
+     * To prevent out-of-order reads, key.interestOps(0) is called before it is passed
      * to this method
      *
      * @param client - SocketChannel corresponding to the client
@@ -109,7 +172,7 @@ public abstract class NIOServer implements Runnable
                     if(key.isReadable())
                     {
                         SocketChannel client = (SocketChannel)key.channel();
-                        key.interestOps(key.interestOps() & SelectionKey.OP_READ);
+                        key.interestOps(0);
 
                         IOProcessor proc = new IOProcessor(client, key);
                         pool.execute(proc);

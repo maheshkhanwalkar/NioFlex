@@ -16,8 +16,6 @@
 
 import com.inixsoftware.nioflex.nio.NIOServer;
 
-import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 
@@ -32,23 +30,15 @@ public class MyServer extends NIOServer
     @Override
     public void handleRead(SocketChannel client, SelectionKey key)
     {
-        ByteBuffer buffer = ByteBuffer.allocate(12);
-        try
+        String str = readString(12, client);
+        if(str.equals("Hello world!"))
         {
-            while(client.read(buffer) < 12);
-            buffer.flip();
-
-            System.out.println(new String(buffer.array()));
-
-            ByteBuffer resp = ByteBuffer.allocate(12);
-            resp.put("Hello world\n".getBytes());
-            resp.flip();
-
-            client.write(resp);
+            writeString("Hello client\n", client);
         }
-        catch (IOException e)
+
+        if(str.equals("Hello again!"))
         {
-            e.printStackTrace();
+            writeString("Hello again, client\n", client);
         }
     }
 }
