@@ -22,9 +22,9 @@ public class DeployServer
     public static void main(String[] args)
     {
         EchoServer server = new EchoServer();
-        ServerDispatch flex = new ServerDispatch(8787, server);
+        ServerDispatch dispatch = new ServerDispatch(8787, server);
 
-        flex.startUp();
+        dispatch.startUp();
 
         /*MyServer server = new MyServer();
 
