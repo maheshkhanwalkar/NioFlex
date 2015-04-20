@@ -25,10 +25,5 @@ public class DeployServer
         ServerDispatch dispatch = new ServerDispatch(8787, server);
 
         dispatch.startUp();
-
-        /*MyServer server = new MyServer();
-
-        FlexServer flex = new FlexServer(8585, server);
-        flex.startUp();*/
     }
 }
