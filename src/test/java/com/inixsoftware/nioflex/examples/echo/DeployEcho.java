@@ -1,3 +1,5 @@
+package com.inixsoftware.nioflex.examples.echo;
+
 /*
     Copyright 2015 Mahesh Khanwalkar
 
@@ -15,9 +17,8 @@
 */
 
 import com.inixsoftware.nioflex.nio.ServerDispatch;
-import com.inixsoftware.nioflex.examples.echo.EchoServer;
 
-public class DeployServer
+public class DeployEcho
 {
     public static void main(String[] args)
     {
