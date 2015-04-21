@@ -18,9 +18,11 @@ package com.inixsoftware.nioflex.examples;
 
 
 import com.inixsoftware.nioflex.nio.ServerDispatch;
+import org.junit.Test;
 
 public class DeployRW
 {
+    @Test
     public static void main(String[] args)
     {
         RWServer server = new RWServer();

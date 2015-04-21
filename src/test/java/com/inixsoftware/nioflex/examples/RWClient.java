@@ -17,6 +17,7 @@ package com.inixsoftware.nioflex.examples;
 */
 
 import com.inixsoftware.nioflex.nio.utils.NIOUtils;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -24,6 +25,7 @@ import java.nio.channels.SocketChannel;
 
 public class RWClient
 {
+    @Test
     public static void main(String[] args) throws IOException
     {
         SocketChannel client = SocketChannel.open(new InetSocketAddress("localhost", 5252));
