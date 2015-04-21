@@ -107,6 +107,30 @@ public class NIOUtils
     }
 
     /**
+     * Reads 2 bytes (short) from a SocketChannel, and returns
+     * the result
+     *
+     * @param client - SocketChannel to read from
+     * @return short read from SocketChannel
+     */
+    public static short readShort(SocketChannel client)
+    {
+        return readBuffer(2, client).getShort();
+    }
+
+    /**
+     * Reads 8 bytes (long) from a SocketChannel, and returns
+     * the result
+     *
+     * @param client - SocketChannel to read from
+     * @return long read from SocketChannel
+     */
+    public static long readLong(SocketChannel client)
+    {
+        return readBuffer(8, client).getLong();
+    }
+
+    /**
      * Write byte[] to a SocketChannel
      *
      * @param bytes - bytes to be written
@@ -164,6 +188,52 @@ public class NIOUtils
     {
         ByteBuffer buf = ByteBuffer.allocate(4); //int is 4 bytes
         buf.putInt(num);
+
+        buf.flip();
+
+        try
+        {
+            client.write(buf);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Write a short to a SocketChannel
+     *
+     * @param num - short to write
+     * @param client - SocketChannel where data will be written to
+     */
+    public static void writeShort(short num, SocketChannel client)
+    {
+        ByteBuffer buf = ByteBuffer.allocate(2); //short is 2 bytes
+        buf.putShort(num);
+
+        buf.flip();
+
+        try
+        {
+            client.write(buf);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Write a long to a SocketChannel
+     *
+     * @param num - long to write
+     * @param client - SocketChannel where data will be written to
+     */
+    public static void writeLong(long num, SocketChannel client)
+    {
+        ByteBuffer buf = ByteBuffer.allocate(8); //long is 8 bytes
+        buf.putLong(num);
 
         buf.flip();
 

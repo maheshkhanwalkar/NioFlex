@@ -32,7 +32,7 @@ public class DeployServer
            dispatch.startUp() starts the server on a new Thread
         */
 
-        ServerDispatch dispatch = new ServerDispatch(8787, server);
+        ServerDispatch dispatch = new ServerDispatch(80, server);
         dispatch.startUp();
     }
 }
