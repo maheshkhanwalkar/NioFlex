@@ -1,4 +1,4 @@
-package com.inixsoftware.nioflex.examples.generic;
+package com.inixsoftware.nioflex.examples;
 
 /*
     Copyright 2015 Mahesh Khanwalkar
@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
 
-public class RWShortClient
+public class RWClient
 {
     public static void main(String[] args) throws IOException
     {
@@ -33,6 +33,15 @@ public class RWShortClient
         short resp = NIOUtils.readShort(client);
 
         System.out.println(resp); //server sends 4096
+        NIOUtils.writeInt(256, client);
+
+        int iNum = NIOUtils.readInt(client);
+        System.out.println(iNum); //server sends 512
+
+        NIOUtils.writeLong(65536, client);
+        long lNum = NIOUtils.readLong(client);
+
+        System.out.println(lNum); //server sends 131072
         client.close();
     }
 }

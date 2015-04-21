@@ -38,6 +38,15 @@ public abstract class NIOServer implements Runnable
     protected ThreadPoolExecutor pool = new ThreadPoolExecutor(cores, cores,
             10, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
+    private volatile boolean SHUTDOWN = false;
+
+    /**
+     * Tell the server to shutdown
+     */
+    protected void scheduleShutdown()
+    {
+        SHUTDOWN = true;
+    }
 
     /* Restrict access */
 
@@ -118,6 +127,17 @@ public abstract class NIOServer implements Runnable
                         IOProcessor proc = new IOProcessor(client, key);
                         pool.execute(proc);
                     }
+                }
+
+                if(SHUTDOWN)
+                {
+                    //Server will shutdown NOW!
+                    pool.shutdown();
+
+                    selector.close();
+                    server.close();
+
+                    return;
                 }
             }
             catch (IOException e)

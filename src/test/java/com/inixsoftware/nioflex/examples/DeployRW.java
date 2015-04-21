@@ -1,4 +1,4 @@
-package com.inixsoftware.nioflex.examples.echo;
+package com.inixsoftware.nioflex.examples;
 
 /*
     Copyright 2015 Mahesh Khanwalkar
@@ -16,24 +16,16 @@ package com.inixsoftware.nioflex.examples.echo;
     limitations under the License.
 */
 
+
 import com.inixsoftware.nioflex.nio.ServerDispatch;
 
-public class DeployEcho
+public class DeployRW
 {
     public static void main(String[] args)
     {
-        /* EchoServer is our server implementation */
-        EchoServer server = new EchoServer();
+        RWServer server = new RWServer();
+        ServerDispatch dispatch = new ServerDispatch(5252, server);
 
-        /*
-           The ServerDispatch initializes the server, by
-           binding it to the requested port & sets up basic
-           NIO selectors, etc.
-
-           dispatch.startUp() starts the server on a new Thread
-        */
-
-        ServerDispatch dispatch = new ServerDispatch(8787, server);
         dispatch.startUp();
     }
 }

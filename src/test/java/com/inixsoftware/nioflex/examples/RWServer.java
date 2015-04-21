@@ -1,4 +1,4 @@
-package com.inixsoftware.nioflex.examples.generic;
+package com.inixsoftware.nioflex.examples;
 
 /*
     Copyright 2015 Mahesh Khanwalkar
@@ -23,7 +23,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 
 //tests read/write of short ints
-public class RWShortServer extends NIOServer
+public class RWServer extends NIOServer
 {
     @Override
     public void handleAccept(SocketChannel client, SelectionKey key)
@@ -34,9 +34,19 @@ public class RWShortServer extends NIOServer
     @Override
     public void handleRead(SocketChannel client, SelectionKey key)
     {
-        short num = NIOUtils.readShort(client);
-        System.out.println(num); //client test sends 1024
+        short sNum = NIOUtils.readShort(client);
+        System.out.println(sNum); //client sends 1024
 
-        NIOUtils.writeShort((short)4096, client);
+        NIOUtils.writeShort((short) 4096, client);
+        int iNum = NIOUtils.readInt(client); //client sends 256
+
+        System.out.println(iNum);
+        NIOUtils.writeInt(512, client);
+
+        long lNum = NIOUtils.readLong(client); //client sends 65536
+        System.out.println(lNum);
+
+        NIOUtils.writeLong(131072, client);
+        scheduleShutdown(); //tell the server to shutdown
     }
 }
