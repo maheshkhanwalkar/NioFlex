@@ -17,6 +17,9 @@
 import com.inixsoftware.nioflex.nio.NIOServer;
 import com.inixsoftware.nioflex.nio.utils.NIOUtils;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 
@@ -26,25 +29,89 @@ public class RWServer extends NIOServer
     @Override
     public void handleAccept(SocketChannel client, SelectionKey key)
     {
-        System.out.println("Client Accepted!");
     }
 
     @Override
     public void handleRead(SocketChannel client, SelectionKey key)
     {
-        short sNum = NIOUtils.readShort(client);
-        System.out.println(sNum); //client sends 1024
+        try
+        {
+            BufferedWriter testLog = new BufferedWriter(new FileWriter("results.log"));
+            
+            if(NIOUtils.readShort(client) == 2)
+                testLog.write("PASSED\n");
+            else
+                testLog.write("FAILED\n");
 
-        NIOUtils.writeShort((short) 4096, client);
-        int iNum = NIOUtils.readInt(client); //client sends 256
+            if(NIOUtils.readShort(client) == 4)
+                testLog.write("PASSED\n");
+            else
+                testLog.write("FAILED\n");
 
-        System.out.println(iNum);
-        NIOUtils.writeInt(512, client);
+            if(NIOUtils.readShort(client) == 1)
+                testLog.write("PASSED\n");
+            else
+                testLog.write("FAILED\n");
 
-        long lNum = NIOUtils.readLong(client); //client sends 65536
-        System.out.println(lNum);
+            if(NIOUtils.readShort(client) == 16)
+                testLog.write("PASSED\n");
+            else
+                testLog.write("FAILED\n");
 
-        NIOUtils.writeLong(131072, client);
-        scheduleShutdown(); //tell the server to shutdown
+            if(NIOUtils.readInt(client) == 32)
+                testLog.write("PASSED\n");
+            else
+                testLog.write("FAILED\n");
+            
+            if(NIOUtils.readInt(client) == 64)
+                testLog.write("PASSED\n");
+            else
+                testLog.write("FAILED\n");
+            
+            if(NIOUtils.readLong(client) == 128)
+                testLog.write("PASSED\n");
+            else
+                testLog.write("FAILED\n");
+
+            if(NIOUtils.readLong(client) == 128)
+                testLog.write("PASSED\n");
+            else
+                testLog.write("FAILED\n");
+
+            if(NIOUtils.readLong(client) == 65536)
+                testLog.write("PASSED\n");
+            else
+                testLog.write("FAILED\n");
+
+            if(NIOUtils.readLong(client) == 256)
+                testLog.write("PASSED\n");
+            else
+                testLog.write("FAILED\n");
+
+            if(NIOUtils.readLong(client) == 1024)
+                testLog.write("PASSED\n");
+            else
+                testLog.write("FAILED\n");
+
+            int bytesToRead = NIOUtils.readInt(client);
+
+            if(NIOUtils.readString(bytesToRead, client).equals("Hello world!"))
+                testLog.write("PASSED\n");
+            else
+                testLog.write("FAILED\n");
+
+            testLog.flush();
+            testLog.close();
+
+            System.out.println("Results logged to results.log");
+            scheduleShutdown(); //tell the server to shutdown
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        
+        
+        
     }
 }

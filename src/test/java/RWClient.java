@@ -31,24 +31,29 @@ public class RWClient
             SocketChannel client = SocketChannel.open(new InetSocketAddress("localhost", 7337));
             client.configureBlocking(true);
 
-            NIOUtils.writeShort((short) 1024, client);
-            short resp = NIOUtils.readShort(client);
+            NIOUtils.writeShort((short) 2, client);
+            NIOUtils.writeShort((short) 4, client);
+            NIOUtils.writeShort((short) 1, client);
+            NIOUtils.writeShort((short) 16, client);
 
-            System.out.println(resp); //server sends 4096
-            NIOUtils.writeInt(256, client);
+            NIOUtils.writeInt(32, client);
+            NIOUtils.writeInt(64, client);
 
-            int iNum = NIOUtils.readInt(client);
-            System.out.println(iNum); //server sends 512
-
+            NIOUtils.writeLong(128, client);
+            NIOUtils.writeLong(128, client);
             NIOUtils.writeLong(65536, client);
-            long lNum = NIOUtils.readLong(client);
+            NIOUtils.writeLong(256, client);
+            NIOUtils.writeLong(1024, client);
 
-            System.out.println(lNum); //server sends 131072
+            NIOUtils.writeInt(12, client);
+            NIOUtils.writeString("Hello world!", client);
+
             client.close();
         }
         catch (IOException e)
         {
             e.printStackTrace();
+            System.exit(-1);
         }
     }
 }

@@ -37,6 +37,11 @@ public class ServerDispatch
     private NIOServer nio;
 
     /**
+     * Thread that the NIO Server is launched on
+     */
+    private Thread dispatch;
+
+    /**
      * Initializes and Binds NIO Server to the provided port
      * @param port port to bind the server on
      * @param nio NIO server to run
@@ -69,7 +74,22 @@ public class ServerDispatch
      */
     public void startUp()
     {
-        Thread dispatch = new Thread(nio);
+        dispatch = new Thread(nio);
         dispatch.start();
+    }
+
+    /**
+     * Calls join() on the Server's thread
+     */
+    public void joinThread()
+    {
+        try
+        {
+            dispatch.join();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

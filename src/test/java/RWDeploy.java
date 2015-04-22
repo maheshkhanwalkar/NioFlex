@@ -18,7 +18,7 @@
 import com.inixsoftware.nioflex.nio.ServerDispatch;
 import org.junit.Test;
 
-public class DeployRW
+public class RWDeploy
 {
     @Test
     public void serverTest()
@@ -27,5 +27,6 @@ public class DeployRW
         ServerDispatch dispatch = new ServerDispatch(7337, server);
 
         dispatch.startUp();
+        dispatch.joinThread();
     }
 }

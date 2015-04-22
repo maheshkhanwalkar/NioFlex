@@ -16,7 +16,6 @@ package com.inixsoftware.nioflex.nio;
     limitations under the License.
 */
 
-import java.io.IOException;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -128,6 +127,7 @@ public abstract class NIOServer implements Runnable
             try
             {
                 selector.select();
+
                 Set<SelectionKey> keys = selector.selectedKeys();
 
                 Iterator<SelectionKey> itr = keys.iterator();
@@ -170,7 +170,7 @@ public abstract class NIOServer implements Runnable
                     return;
                 }
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                 e.printStackTrace();
             }
