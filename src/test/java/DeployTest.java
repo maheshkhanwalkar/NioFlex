@@ -18,15 +18,18 @@
 import com.inixsoftware.nioflex.nio.ServerDispatch;
 import org.junit.Test;
 
-public class RWDeploy
+public class DeployTest
 {
     @Test
     public void serverTest()
     {
-        RWServer server = new RWServer();
+        ServerTest server = new ServerTest();
         ServerDispatch dispatch = new ServerDispatch(7337, server);
 
         dispatch.startUp();
+        ClientTest client = new ClientTest();
+
+        client.testClient();
         dispatch.joinThread();
     }
 }
