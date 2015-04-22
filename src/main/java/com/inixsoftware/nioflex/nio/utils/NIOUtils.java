@@ -28,8 +28,8 @@ public class NIOUtils
     /**
      * Reads data from a SocketChannel into a ByteBuffer
      *
-     * @param len - Number of bytes to read
-     * @param client - SocketChannel to read from
+     * @param len Number of bytes to read
+     * @param client SocketChannel to read from
      * @return ByteBuffer read from SocketChannel
      */
     public static ByteBuffer readBuffer(int len, SocketChannel client)
@@ -56,8 +56,8 @@ public class NIOUtils
     /**
      * Reads data from a SocketChannel, and returns a byte[]
      *
-     * @param len - Number of bytes to read
-     * @param client - SocketChannel to read from
+     * @param len Number of bytes to read
+     * @param client SocketChannel to read from
      * @return byte[] read from SocketChannel
      */
     public static byte[] readBytes(int len, SocketChannel client)
@@ -69,8 +69,8 @@ public class NIOUtils
      * Reads raw bytes from a SocketChannel, and returns a String
      * equivalent (encoded using the default Charset)
      *
-     * @param len - Number of bytes to read
-     * @param client - SocketChannel to read from
+     * @param len Number of bytes to read
+     * @param client SocketChannel to read from
      * @return String read from SocketChannel
      */
     public static String readString(int len, SocketChannel client)
@@ -83,9 +83,9 @@ public class NIOUtils
      * Reads raw bytes from a SocketChannel, and returns a String
      * equivalent using the provided Charset
      *
-     * @param len - Number of bytes to read
-     * @param client - SocketChannel to read from
-     * @param charset - Charset to encode bytes to String with
+     * @param len Number of bytes to read
+     * @param client SocketChannel to read from
+     * @param charset Charset to encode bytes to String with
      * @return String read from SocketChannel
      */
     public static String readString(int len, SocketChannel client, Charset charset)
@@ -98,7 +98,7 @@ public class NIOUtils
      * Reads 4 bytes (int) from a SocketChannel, and returns
      * the result
      *
-     * @param client - SocketChannel to read from
+     * @param client SocketChannel to read from
      * @return Integer read from SocketChannel
      */
     public static int readInt(SocketChannel client)
@@ -110,7 +110,7 @@ public class NIOUtils
      * Reads 2 bytes (short) from a SocketChannel, and returns
      * the result
      *
-     * @param client - SocketChannel to read from
+     * @param client SocketChannel to read from
      * @return short read from SocketChannel
      */
     public static short readShort(SocketChannel client)
@@ -122,7 +122,7 @@ public class NIOUtils
      * Reads 8 bytes (long) from a SocketChannel, and returns
      * the result
      *
-     * @param client - SocketChannel to read from
+     * @param client SocketChannel to read from
      * @return long read from SocketChannel
      */
     public static long readLong(SocketChannel client)
@@ -133,8 +133,8 @@ public class NIOUtils
     /**
      * Write byte[] to a SocketChannel
      *
-     * @param bytes - bytes to be written
-     * @param client - SocketChannel where data will be written to
+     * @param bytes bytes to be written
+     * @param client SocketChannel where data will be written to
      */
     public static void writeBytes(byte[] bytes, SocketChannel client)
     {
@@ -157,8 +157,8 @@ public class NIOUtils
      * Write a String to a SocketChannel, converting the String to a
      * bytes, using the default Charset
      *
-     * @param str - String to write
-     * @param client - SocketChannel where data will be written to
+     * @param str String to write
+     * @param client SocketChannel where data will be written to
      */
     public static void writeString(String str, SocketChannel client)
     {
@@ -169,9 +169,9 @@ public class NIOUtils
      * Write a String to a SocketChannel, converting the String to a
      * bytes, using the provided Charset
      *
-     * @param str - String to write
-     * @param client - SocketChannel where data will be written to
-     * @param charset - Charset to encode String to bytes
+     * @param str String to write
+     * @param client SocketChannel where data will be written to
+     * @param charset Charset to encode String to bytes
      */
     public static void writeString(String str, SocketChannel client, Charset charset)
     {
@@ -181,8 +181,8 @@ public class NIOUtils
     /**
      * Write a integer to a SocketChannel
      *
-     * @param num - int to write
-     * @param client - SocketChannel where data will be written to
+     * @param num int to write
+     * @param client SocketChannel where data will be written to
      */
     public static void writeInt(int num, SocketChannel client)
     {
@@ -204,8 +204,8 @@ public class NIOUtils
     /**
      * Write a short to a SocketChannel
      *
-     * @param num - short to write
-     * @param client - SocketChannel where data will be written to
+     * @param num short to write
+     * @param client SocketChannel where data will be written to
      */
     public static void writeShort(short num, SocketChannel client)
     {
@@ -227,8 +227,8 @@ public class NIOUtils
     /**
      * Write a long to a SocketChannel
      *
-     * @param num - long to write
-     * @param client - SocketChannel where data will be written to
+     * @param num long to write
+     * @param client SocketChannel where data will be written to
      */
     public static void writeLong(long num, SocketChannel client)
     {

@@ -1,5 +1,3 @@
-package com.inixsoftware.nioflex.examples;
-
 /*
     Copyright 2015 Mahesh Khanwalkar
 

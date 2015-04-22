@@ -1,5 +1,3 @@
-package com.inixsoftware.nioflex.examples;
-
 /*
     Copyright 2015 Mahesh Khanwalkar
 
@@ -23,10 +21,10 @@ import org.junit.Test;
 public class DeployRW
 {
     @Test
-    public static void main(String[] args)
+    public void serverTest()
     {
         RWServer server = new RWServer();
-        ServerDispatch dispatch = new ServerDispatch(5252, server);
+        ServerDispatch dispatch = new ServerDispatch(7337, server);
 
         dispatch.startUp();
     }

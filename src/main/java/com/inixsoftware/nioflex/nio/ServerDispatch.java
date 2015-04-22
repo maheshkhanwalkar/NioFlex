@@ -22,23 +22,33 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 
+/**
+ * Initializes and Dispatches NIO Servers on a
+ * new thread
+ *
+ * @author Mahesh Khanwalkar
+ */
 public class ServerDispatch
 {
-    private int port;
-    private ServerSocketChannel server;
 
-    private Selector selector;
+    /**
+     * NIO Server to launch
+     */
     private NIOServer nio;
 
+    /**
+     * Initializes and Binds NIO Server to the provided port
+     * @param port port to bind the server on
+     * @param nio NIO server to run
+     */
     public ServerDispatch(int port, NIOServer nio)
     {
-        this.port = port;
         this.nio = nio;
 
         try
         {
-            server = ServerSocketChannel.open().bind(new InetSocketAddress("localhost", port));
-            selector = Selector.open();
+            ServerSocketChannel server = ServerSocketChannel.open().bind(new InetSocketAddress("localhost", port));
+            Selector selector = Selector.open();
 
             server.configureBlocking(false);
             server.register(selector, SelectionKey.OP_ACCEPT);
@@ -54,24 +64,12 @@ public class ServerDispatch
         }
     }
 
+    /**
+     * Launches the server on another thread
+     */
     public void startUp()
     {
         Thread dispatch = new Thread(nio);
         dispatch.start();
-    }
-
-    public int getPort()
-    {
-        return port;
-    }
-
-    public Selector getSelector()
-    {
-        return selector;
-    }
-
-    public ServerSocketChannel getServerChannel()
-    {
-        return server;
     }
 }

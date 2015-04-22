@@ -1,5 +1,3 @@
-package com.inixsoftware.nioflex.examples;
-
 /*
     Copyright 2015 Mahesh Khanwalkar
 
@@ -26,24 +24,31 @@ import java.nio.channels.SocketChannel;
 public class RWClient
 {
     @Test
-    public static void main(String[] args) throws IOException
+    public void clientTest()
     {
-        SocketChannel client = SocketChannel.open(new InetSocketAddress("localhost", 5252));
-        client.configureBlocking(true);
+        try
+        {
+            SocketChannel client = SocketChannel.open(new InetSocketAddress("localhost", 7337));
+            client.configureBlocking(true);
 
-        NIOUtils.writeShort((short) 1024, client);
-        short resp = NIOUtils.readShort(client);
+            NIOUtils.writeShort((short) 1024, client);
+            short resp = NIOUtils.readShort(client);
 
-        System.out.println(resp); //server sends 4096
-        NIOUtils.writeInt(256, client);
+            System.out.println(resp); //server sends 4096
+            NIOUtils.writeInt(256, client);
 
-        int iNum = NIOUtils.readInt(client);
-        System.out.println(iNum); //server sends 512
+            int iNum = NIOUtils.readInt(client);
+            System.out.println(iNum); //server sends 512
 
-        NIOUtils.writeLong(65536, client);
-        long lNum = NIOUtils.readLong(client);
+            NIOUtils.writeLong(65536, client);
+            long lNum = NIOUtils.readLong(client);
 
-        System.out.println(lNum); //server sends 131072
-        client.close();
+            System.out.println(lNum); //server sends 131072
+            client.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

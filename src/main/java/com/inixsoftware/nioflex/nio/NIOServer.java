@@ -27,17 +27,42 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * NIOServer processes NIO events
+ *
+ * @author Mahesh Khanwalkar
+ */
 public abstract class NIOServer implements Runnable
 {
+    /**
+     * Port that the server is bound to
+     */
     protected int port;
+
+    /**
+     * NIO ServerSocketChannel used by the server
+     */
     protected ServerSocketChannel server;
 
+    /**
+     * NIO Selector used by the server
+     */
     protected Selector selector;
+
+    /**
+     * Number of processor cores (visible to the JVM)
+     */
     protected int cores = Runtime.getRuntime().availableProcessors();
 
+    /**
+     * Thread Pool used by the server to handle events
+     */
     protected ThreadPoolExecutor pool = new ThreadPoolExecutor(cores, cores,
             10, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
+    /**
+     * Flag to shutdown the server
+     */
     private volatile boolean SHUTDOWN = false;
 
     /**
@@ -48,8 +73,12 @@ public abstract class NIOServer implements Runnable
         SHUTDOWN = true;
     }
 
-    /* Restrict access */
+    /* PRIVATE - Restrict access */
 
+    /**
+     * Executed on another thread and passes control
+     * to the handleRead(SocketChannel, SelectionKey) methods
+     */
     private class IOProcessor implements Runnable
     {
         private SocketChannel client;
@@ -76,21 +105,22 @@ public abstract class NIOServer implements Runnable
     /**
      * This method is invoked after the server accepts a new client
      *
-     * @param client - SocketChannel corresponding to the client
-     * @param key - current SelectionKey
+     * @param client SocketChannel corresponding to the client
+     * @param key current SelectionKey
      */
     public abstract void handleAccept(SocketChannel client, SelectionKey key);
 
     /**
-     * This method is invoked once data can be read from the client
-     * To prevent out-of-order reads, key.interestOps(0) is called before it is passed
-     * to this method
+     * This method is invoked once data can be read from the client.
      *
-     * @param client - SocketChannel corresponding to the client
-     * @param key - current SelectionKey
+     * @param client SocketChannel corresponding to the client
+     * @param key current SelectionKey
      */
     public abstract void handleRead(SocketChannel client, SelectionKey key);
 
+    /**
+     * NIO Event Handler (e.g. Accepting Clients & Task Scheduling)
+     */
     private void mainLoop()
     {
         while(true)
@@ -147,19 +177,37 @@ public abstract class NIOServer implements Runnable
         }
     }
 
+    /**
+     * Runs the mainLoop() method which handles
+     * NIO events via Selectors
+     */
     public void run()
     {
         mainLoop();
     }
+
+    /**
+     * Sets the NIOServer's port
+     * @param port port to bind to
+     */
     public void setPort(int port)
     {
         this.port = port;
     }
 
+    /**
+     * Sets NIOServer's internal ServerSocketChannel
+     * @param server ServerSocketChannel for the server
+     */
     public void setServer(ServerSocketChannel server)
     {
         this.server = server;
     }
+
+    /**
+     * Sets NIOServer's internal Selector
+     * @param selector Selector for NIO processes
+     */
     public void setSelector(Selector selector)
     {
         this.selector = selector;
