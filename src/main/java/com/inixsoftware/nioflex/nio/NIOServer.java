@@ -16,10 +16,14 @@ package com.inixsoftware.nioflex.nio;
     limitations under the License.
 */
 
+import com.inixsoftware.nioflex.nio.utils.NIOUtils;
+
+import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -56,8 +60,8 @@ public abstract class NIOServer implements Runnable
     /**
      * Thread Pool used by the server to handle events
      */
-    protected ThreadPoolExecutor pool = new ThreadPoolExecutor(cores, cores,
-            10, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
+    protected ThreadPoolExecutor pool = new ThreadPoolExecutor(cores, cores * 2,
+            1, TimeUnit.MINUTES, new LinkedBlockingQueue<Runnable>());
 
     /**
      * Flag to shutdown the server
@@ -97,7 +101,6 @@ public abstract class NIOServer implements Runnable
 
             key.interestOps(key.interestOps() ^ SelectionKey.OP_READ);
             selector.wakeup();
-
         }
     }
 
@@ -129,8 +132,8 @@ public abstract class NIOServer implements Runnable
                 selector.select();
 
                 Set<SelectionKey> keys = selector.selectedKeys();
-
                 Iterator<SelectionKey> itr = keys.iterator();
+
                 while(itr.hasNext())
                 {
                     SelectionKey key = itr.next();
@@ -151,11 +154,20 @@ public abstract class NIOServer implements Runnable
 
                     if(key.isReadable())
                     {
-                        SocketChannel client = (SocketChannel)key.channel();
+                        SocketChannel client = (SocketChannel) key.channel();
+                        ByteBuffer oneByte = ByteBuffer.allocate(1);
+
+                        if (client.read(oneByte) < 0)
+                            continue;
+
+                        oneByte.flip();
+                        NIOUtils.refund(client, oneByte);
+
                         key.interestOps(0);
 
                         IOProcessor proc = new IOProcessor(client, key);
-                        pool.execute(proc);
+                        pool.submit(proc);
+
                     }
                 }
 

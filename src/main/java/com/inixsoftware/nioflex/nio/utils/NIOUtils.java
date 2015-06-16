@@ -20,10 +20,25 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
+import java.util.HashMap;
 
 public class NIOUtils
 {
     private NIOUtils() {}
+
+    private static HashMap<SocketChannel, ByteBuffer> oneByte = new HashMap<SocketChannel, ByteBuffer>();
+
+    /**
+     * Refunds a ByteBuffer that will be used when the next call
+     * to readBuffer() is performed. Used internally by NIOServer
+     *
+     * @param channel - SocketChannel to refund ByteBuffer to
+     * @param buf - ByteBuffer to refund
+     */
+    public static void refund(SocketChannel channel, ByteBuffer buf)
+    {
+        oneByte.put(channel, buf);
+    }
 
     /**
      * Reads data from a SocketChannel into a ByteBuffer
@@ -36,11 +51,17 @@ public class NIOUtils
     {
         ByteBuffer buffer = ByteBuffer.allocate(len);
 
+        if(oneByte.containsKey(client))
+        {
+            buffer.put(oneByte.get(client).get());
+            oneByte.remove(client);
+        }
+
         int read = 0;
 
         try
         {
-            while((read += client.read(buffer)) < len);
+            while((read += client.read(buffer)) < len - 1);
             buffer.flip();
 
             return buffer;
