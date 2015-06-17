@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.inixsoftware.nioflex</groupId>
-    <artifactId>nioflex-api</artifactId>
+    <artifactId>nioflex</artifactId>
     <version>0.1-SNAPSHOT</version>
 
     <name>NioFlex</name>
