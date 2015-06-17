@@ -99,7 +99,7 @@ public abstract class NIOServer implements Runnable
 
             /* Re-enable read */
 
-            key.interestOps(key.interestOps() ^ SelectionKey.OP_READ);
+            key.interestOps(key.interestOps() | SelectionKey.OP_READ);
             selector.wakeup();
         }
     }
@@ -155,6 +155,13 @@ public abstract class NIOServer implements Runnable
                     if(key.isReadable())
                     {
                         SocketChannel client = (SocketChannel) key.channel();
+
+                        /*
+                           Check if data can actually be read, and if it can
+                           then "refund" it back - so it appears in the next
+                           read call (for that socket) to the NIOUtils API
+                        */
+
                         ByteBuffer oneByte = ByteBuffer.allocate(1);
 
                         if (client.read(oneByte) < 0)
