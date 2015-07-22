@@ -18,6 +18,8 @@ package com.revtekk.nioflex.nio;
 
 import com.revtekk.nioflex.nio.utils.NIOUtils;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -34,7 +36,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Mahesh Khanwalkar
  */
-public abstract class NIOServer implements Runnable
+public abstract class NIOServer
 {
     /**
      * Port that the server is bound to
@@ -66,6 +68,12 @@ public abstract class NIOServer implements Runnable
      * Flag to shutdown the server
      */
     private volatile boolean SHUTDOWN = false;
+
+    public NIOServer(int port)
+    {
+        setPort(port);
+    }
+
 
     /**
      * Tell the server to shutdown
@@ -199,9 +207,26 @@ public abstract class NIOServer implements Runnable
      * Runs the mainLoop() method which handles
      * NIO events via Selectors
      */
-    public void run()
+    public final void launch()
     {
-        mainLoop();
+        try
+        {
+            ServerSocketChannel server = ServerSocketChannel.open().bind(new InetSocketAddress("localhost", port));
+            Selector selector = Selector.open();
+
+            server.configureBlocking(false);
+            server.register(selector, SelectionKey.OP_ACCEPT);
+
+            setSelector(selector);
+            setServer(server);
+
+            mainLoop();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
     /**

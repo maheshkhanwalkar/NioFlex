@@ -15,7 +15,6 @@
 */
 
 
-import com.revtekk.nioflex.nio.ServerDispatch;
 import org.junit.Test;
 
 public class DeployTest
@@ -23,13 +22,28 @@ public class DeployTest
     @Test
     public void serverTest()
     {
-        ServerTest server = new ServerTest();
-        ServerDispatch dispatch = new ServerDispatch(7337, server);
+        Thread thread = new Thread(new Runnable()
+        {
+            public void run()
+            {
+                ServerTest server = new ServerTest(7337);
+                server.launch();
+            }
+        });
 
-        dispatch.startUp();
+        thread.start();
+
+
         ClientTest client = new ClientTest();
-
         client.testClient();
-        dispatch.joinThread();
+
+        try
+        {
+            thread.join();
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

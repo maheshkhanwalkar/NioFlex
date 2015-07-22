@@ -26,9 +26,15 @@ import java.nio.charset.Charset;
 
 public class ServerTest extends NIOServer
 {
+    public ServerTest(int port)
+    {
+        super(port);
+    }
+
     @Override
     public void handleAccept(SocketChannel client, SelectionKey key)
     {
+        System.out.println("CLIENT CONNECTED");
     }
 
     @Override
