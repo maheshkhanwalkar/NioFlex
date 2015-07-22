@@ -15,7 +15,7 @@
 */
 
 
-import com.inixsoftware.nioflex.nio.ServerDispatch;
+import com.revtekk.nioflex.nio.ServerDispatch;
 import org.junit.Test;
 
 public class DeployTest

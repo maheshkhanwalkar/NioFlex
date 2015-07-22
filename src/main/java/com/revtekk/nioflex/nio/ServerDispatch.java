@@ -1,4 +1,4 @@
-package com.inixsoftware.nioflex.nio;
+package com.revtekk.nioflex.nio;
 
 /*
     Copyright 2015 Mahesh Khanwalkar

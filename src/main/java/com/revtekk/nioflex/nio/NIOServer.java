@@ -1,4 +1,4 @@
-package com.inixsoftware.nioflex.nio;
+package com.revtekk.nioflex.nio;
 
 /*
     Copyright 2015 Mahesh Khanwalkar
@@ -16,14 +16,13 @@ package com.inixsoftware.nioflex.nio;
     limitations under the License.
 */
 
-import com.inixsoftware.nioflex.nio.utils.NIOUtils;
+import com.revtekk.nioflex.nio.utils.NIOUtils;
 
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.LinkedBlockingQueue;
