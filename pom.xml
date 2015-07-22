@@ -6,7 +6,7 @@
 
     <groupId>com.inixsoftware.nioflex</groupId>
     <artifactId>nioflex</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.10-SNAPSHOT</version>
 
     <name>NioFlex</name>
     <description>Flexible NIO Server Building-Blocks for Java</description>

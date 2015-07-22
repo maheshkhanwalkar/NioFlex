@@ -233,7 +233,7 @@ public abstract class NIOServer
      * Sets the NIOServer's port
      * @param port port to bind to
      */
-    public void setPort(int port)
+    private void setPort(int port)
     {
         this.port = port;
     }
@@ -242,7 +242,7 @@ public abstract class NIOServer
      * Sets NIOServer's internal ServerSocketChannel
      * @param server ServerSocketChannel for the server
      */
-    public void setServer(ServerSocketChannel server)
+    private void setServer(ServerSocketChannel server)
     {
         this.server = server;
     }
@@ -251,7 +251,7 @@ public abstract class NIOServer
      * Sets NIOServer's internal Selector
      * @param selector Selector for NIO processes
      */
-    public void setSelector(Selector selector)
+    private void setSelector(Selector selector)
     {
         this.selector = selector;
     }
