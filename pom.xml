@@ -11,6 +11,11 @@
     <name>NioFlex</name>
     <description>Flexible NIO Server Building-Blocks for Java</description>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
     <licenses>
         <license>
             <name>The Apache License, Version 2.0</name>
