@@ -53,10 +53,9 @@ public class EchoServer extends NIOServer
         }
     }
 }
-
 ```
 
 
 ### Version
 
-The current version of NioFlex is 0.10-SNAPSHOT.
+The current version of NioFlex is 0.10.0
