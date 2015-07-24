@@ -39,7 +39,7 @@ public class EchoServer extends NIOServer
         
         /* 
            This Echo-Server only accepts data of size 4096 
-           (this was arbitrarily chosen) bytes or less 
+           (arbitrarily chosen) bytes or less
         */
         
         if(len <= 4096)
@@ -71,5 +71,4 @@ dependency is:
   <artifactId>nioflex</artifactId>
   <version>0.10</version>
 </dependency>
-
 ```
