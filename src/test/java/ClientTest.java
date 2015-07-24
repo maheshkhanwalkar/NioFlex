@@ -29,41 +29,43 @@ public class ClientTest
             SocketChannel client = SocketChannel.open(new InetSocketAddress("localhost", 7337));
             client.configureBlocking(true);
 
+            NIOUtils util = new NIOUtils(client);
+
             for(long i = 0; i < 65536; i++)
             {
                 if (i < Short.MAX_VALUE)
                 {
                     if (i % 3 == 0)
                     {
-                        NIOUtils.writeLong(i, client);
+                        util.writeLong(i);
                         continue;
                     }
 
                     if (i % 11 == 0)
                     {
-                        NIOUtils.writeShort((short) i, client);
+                        util.writeShort((short) i);
                         continue;
                     }
 
-                    NIOUtils.writeInt((int) i, client);
+                    util.writeInt((int) i);
                     continue;
                 }
 
                 if (i % 3 == 0)
                 {
-                    NIOUtils.writeInt((int) i, client);
+                    util.writeInt((int) i);
                     continue;
                 }
 
                 if (i % 2 == 0)
                 {
-                    NIOUtils.writeLong(i, client);
+                    util.writeLong(i);
                     continue;
                 }
 
 
-                NIOUtils.writeInt(13, client);
-                NIOUtils.writeString("TeSTing 1?2?3", client, Charset.forName("UTF-8"));
+                util.writeInt(13);
+                util.writeString("TeSTing 1?2?3", Charset.forName("UTF-8"));
             }
 
             client.close();

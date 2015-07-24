@@ -38,7 +38,7 @@ public class ServerTest extends NIOServer
     }
 
     @Override
-    public void handleRead(SocketChannel client, SelectionKey key)
+    public void handleRead(SocketChannel client, SelectionKey key, NIOUtils util)
     {
         try
         {
@@ -54,7 +54,7 @@ public class ServerTest extends NIOServer
                 {
                     if (i % 3 == 0)
                     {
-                        long res = NIOUtils.readLong(client);
+                        long res = util.readLong();
                         if (res == i)
                         {
                             testLog.write("LONG TEST   #" + count++ + " PASSED\n");
@@ -70,7 +70,7 @@ public class ServerTest extends NIOServer
 
                     if (i % 11 == 0)
                     {
-                        short res = NIOUtils.readShort(client);
+                        short res = util.readShort();
 
                         if (res == (short) i)
                         {
@@ -85,7 +85,7 @@ public class ServerTest extends NIOServer
                         continue;
                     }
 
-                    int res = NIOUtils.readInt(client);
+                    int res = util.readInt();
                     if (res == (int) i)
                     {
                         testLog.write("INT TEST    #" + count++ + " PASSED\n");
@@ -101,7 +101,7 @@ public class ServerTest extends NIOServer
 
                 if (i % 3 == 0)
                 {
-                    int res = NIOUtils.readInt(client);
+                    int res = util.readInt();
                     if (res == (int) i)
                     {
                         testLog.write("INT TEST    #" + count++ + " PASSED\n");
@@ -117,7 +117,7 @@ public class ServerTest extends NIOServer
 
                 if (i % 2 == 0)
                 {
-                    long res = NIOUtils.readLong(client);
+                    long res = util.readLong();
                     if (res == i)
                     {
                         testLog.write("LONG TEST   #" + count++ + " PASSED\n");
@@ -132,13 +132,13 @@ public class ServerTest extends NIOServer
                 }
 
 
-                int len = NIOUtils.readInt(client);
+                int len = util.readInt();
                 if (len != 13)
                 {
                     testLog.write("STRING TEST #" + count++ + " FAILED\n");
                 }
 
-                String str = NIOUtils.readString(len, client, Charset.forName("UTF-8"));
+                String str = util.readString(len, Charset.forName("UTF-8"));
                 if (str.equals("TeSTing 1?2?3"))
                 {
                     testLog.write("STRING TEST #" + count++ + " PASSED\n");

@@ -69,6 +69,7 @@ public abstract class NIOServer
      */
     private volatile boolean SHUTDOWN = false;
 
+
     public NIOServer(int port)
     {
         setPort(port);
@@ -94,15 +95,19 @@ public abstract class NIOServer
         private SocketChannel client;
         private SelectionKey key;
 
-        public IOProcessor(SocketChannel client, SelectionKey key)
+        private NIOUtils util;
+
+        public IOProcessor(SocketChannel client, SelectionKey key, NIOUtils util)
         {
             this.client = client;
             this.key = key;
+
+            this.util = util;
         }
 
         public void run()
         {
-            handleRead(client, key);
+            handleRead(client, key, util);
 
             /* Re-enable read */
 
@@ -124,8 +129,9 @@ public abstract class NIOServer
      *
      * @param client SocketChannel corresponding to the client
      * @param key current SelectionKey
+     * @param util NIOUtils for easy-to-use Socket I/O
      */
-    public abstract void handleRead(SocketChannel client, SelectionKey key);
+    public abstract void handleRead(SocketChannel client, SelectionKey key, NIOUtils util);
 
     /**
      * NIO Event Handler (e.g. Accepting Clients & Task Scheduling)
@@ -175,11 +181,13 @@ public abstract class NIOServer
                             continue;
 
                         oneByte.flip();
-                        NIOUtils.refund(client, oneByte);
+
+                        NIOUtils util = new NIOUtils(client);
+                        util.refund(oneByte);
 
                         key.interestOps(0);
 
-                        IOProcessor proc = new IOProcessor(client, key);
+                        IOProcessor proc = new IOProcessor(client, key, util);
                         pool.submit(proc);
 
                     }

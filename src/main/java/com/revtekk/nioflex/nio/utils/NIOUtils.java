@@ -24,44 +24,47 @@ import java.util.HashMap;
 
 public class NIOUtils
 {
-    private NIOUtils() {}
+    //private static HashMap<SocketChannel, ByteBuffer> oneByte = new HashMap<SocketChannel, ByteBuffer>();
 
-    private static HashMap<SocketChannel, ByteBuffer> oneByte = new HashMap<SocketChannel, ByteBuffer>();
+    private SocketChannel channel;
+    private ByteBuffer refund;
+
+    public NIOUtils(SocketChannel channel)
+    {
+        this.channel = channel;
+    }
 
     /**
      * Refunds a ByteBuffer that will be used when the next call
      * to readBuffer() is performed. Used internally by NIOServer
      *
-     * @param channel - SocketChannel to refund ByteBuffer to
      * @param buf - ByteBuffer to refund
      */
-    public static void refund(SocketChannel channel, ByteBuffer buf)
+    public void refund(ByteBuffer buf)
     {
-        oneByte.put(channel, buf);
+        refund = buf;
     }
 
     /**
      * Reads data from a SocketChannel into a ByteBuffer
      *
      * @param len Number of bytes to read
-     * @param client SocketChannel to read from
      * @return ByteBuffer read from SocketChannel
      */
-    public static ByteBuffer readBuffer(int len, SocketChannel client)
+    public ByteBuffer readBuffer(int len)
     {
         ByteBuffer buffer = ByteBuffer.allocate(len);
-
-        if(oneByte.containsKey(client))
+        if(refund != null)
         {
-            buffer.put(oneByte.get(client).get());
-            oneByte.remove(client);
+            buffer.put(refund.get());
+            refund = null;
         }
 
         int read = 0;
 
         try
         {
-            while((read += client.read(buffer)) < len - 1);
+            while((read += channel.read(buffer)) < len - 1);
             buffer.flip();
 
             return buffer;
@@ -78,12 +81,11 @@ public class NIOUtils
      * Reads data from a SocketChannel, and returns a byte[]
      *
      * @param len Number of bytes to read
-     * @param client SocketChannel to read from
      * @return byte[] read from SocketChannel
      */
-    public static byte[] readBytes(int len, SocketChannel client)
+    public byte[] readBytes(int len)
     {
-        return readBuffer(len, client).array();
+        return readBuffer(len).array();
     }
 
     /**
@@ -91,12 +93,11 @@ public class NIOUtils
      * equivalent (encoded using the default Charset)
      *
      * @param len Number of bytes to read
-     * @param client SocketChannel to read from
      * @return String read from SocketChannel
      */
-    public static String readString(int len, SocketChannel client)
+    public String readString(int len)
     {
-        byte[] bytes = readBytes(len, client);
+        byte[] bytes = readBytes(len);
         return new String(bytes); //uses default encoding
     }
 
@@ -105,13 +106,12 @@ public class NIOUtils
      * equivalent using the provided Charset
      *
      * @param len Number of bytes to read
-     * @param client SocketChannel to read from
      * @param charset Charset to encode bytes to String with
      * @return String read from SocketChannel
      */
-    public static String readString(int len, SocketChannel client, Charset charset)
+    public String readString(int len, Charset charset)
     {
-        byte[] bytes = readBytes(len, client);
+        byte[] bytes = readBytes(len);
         return new String(bytes, charset);
     }
 
@@ -119,45 +119,40 @@ public class NIOUtils
      * Reads 4 bytes (int) from a SocketChannel, and returns
      * the result
      *
-     * @param client SocketChannel to read from
      * @return Integer read from SocketChannel
      */
-    public static int readInt(SocketChannel client)
+    public int readInt()
     {
-        return readBuffer(4, client).getInt();
+        return readBuffer(4).getInt();
     }
 
     /**
      * Reads 2 bytes (short) from a SocketChannel, and returns
      * the result
      *
-     * @param client SocketChannel to read from
      * @return short read from SocketChannel
      */
-    public static short readShort(SocketChannel client)
+    public short readShort()
     {
-        return readBuffer(2, client).getShort();
+        return readBuffer(2).getShort();
     }
 
     /**
      * Reads 8 bytes (long) from a SocketChannel, and returns
      * the result
      *
-     * @param client SocketChannel to read from
      * @return long read from SocketChannel
      */
-    public static long readLong(SocketChannel client)
+    public long readLong()
     {
-        return readBuffer(8, client).getLong();
+        return readBuffer(8).getLong();
     }
 
     /**
      * Write byte[] to a SocketChannel
-     *
      * @param bytes bytes to be written
-     * @param client SocketChannel where data will be written to
      */
-    public static void writeBytes(byte[] bytes, SocketChannel client)
+    public void writeBytes(byte[] bytes)
     {
         ByteBuffer buf = ByteBuffer.allocate(bytes.length);
         buf.put(bytes);
@@ -166,7 +161,7 @@ public class NIOUtils
 
         try
         {
-            client.write(buf);
+            channel.write(buf);
         }
         catch (IOException e)
         {
@@ -179,11 +174,10 @@ public class NIOUtils
      * bytes, using the default Charset
      *
      * @param str String to write
-     * @param client SocketChannel where data will be written to
      */
-    public static void writeString(String str, SocketChannel client)
+    public void writeString(String str)
     {
-        writeBytes(str.getBytes(), client);
+        writeBytes(str.getBytes());
     }
 
     /**
@@ -191,30 +185,27 @@ public class NIOUtils
      * bytes, using the provided Charset
      *
      * @param str String to write
-     * @param client SocketChannel where data will be written to
      * @param charset Charset to encode String to bytes
      */
-    public static void writeString(String str, SocketChannel client, Charset charset)
+    public void writeString(String str, Charset charset)
     {
-        writeBytes(str.getBytes(charset), client);
+        writeBytes(str.getBytes(charset));
     }
 
     /**
      * Write a integer to a SocketChannel
-     *
      * @param num int to write
-     * @param client SocketChannel where data will be written to
      */
-    public static void writeInt(int num, SocketChannel client)
+    public void writeInt(int num)
     {
-        ByteBuffer buf = ByteBuffer.allocate(4); //int is 4 bytes
+        ByteBuffer buf = ByteBuffer.allocate(4);
         buf.putInt(num);
 
         buf.flip();
 
         try
         {
-            client.write(buf);
+            channel.write(buf);
         }
         catch (IOException e)
         {
@@ -224,20 +215,18 @@ public class NIOUtils
 
     /**
      * Write a short to a SocketChannel
-     *
      * @param num short to write
-     * @param client SocketChannel where data will be written to
      */
-    public static void writeShort(short num, SocketChannel client)
+    public void writeShort(short num)
     {
-        ByteBuffer buf = ByteBuffer.allocate(2); //short is 2 bytes
+        ByteBuffer buf = ByteBuffer.allocate(2);
         buf.putShort(num);
 
         buf.flip();
 
         try
         {
-            client.write(buf);
+            channel.write(buf);
         }
         catch (IOException e)
         {
@@ -247,20 +236,18 @@ public class NIOUtils
 
     /**
      * Write a long to a SocketChannel
-     *
      * @param num long to write
-     * @param client SocketChannel where data will be written to
      */
-    public static void writeLong(long num, SocketChannel client)
+    public void writeLong(long num)
     {
-        ByteBuffer buf = ByteBuffer.allocate(8); //long is 8 bytes
+        ByteBuffer buf = ByteBuffer.allocate(8);
         buf.putLong(num);
 
         buf.flip();
 
         try
         {
-            client.write(buf);
+            channel.write(buf);
         }
         catch (IOException e)
         {
