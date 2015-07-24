@@ -77,11 +77,15 @@
       <file leaf-file-name="NIOUtils.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/NIOUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.554295">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5834684">
+              <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
               <folding>
-                <element signature="e#3397#3398#0" expanded="true" />
-                <element signature="e#3444#3445#0" expanded="true" />
+                <element signature="e#909#910#0" expanded="true" />
+                <element signature="e#947#948#0" expanded="true" />
+                <element signature="e#1188#1189#0" expanded="true" />
+                <element signature="e#1216#1217#0" expanded="true" />
+                <element signature="e#3371#3372#0" expanded="true" />
+                <element signature="e#3418#3419#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -647,7 +651,7 @@
       <option name="number" value="Default" />
       <updated>1434937878548</updated>
       <workItem from="1434937878568" duration="75000" />
-      <workItem from="1437528019667" duration="6778000" />
+      <workItem from="1437528019667" duration="6817000" />
     </task>
     <task id="LOCAL-00001" summary="Removed documentation">
       <created>1437528102026</created>
@@ -697,11 +701,17 @@
       <option name="project" value="LOCAL" />
       <updated>1437702226768</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Cleanup">
+      <created>1437702309762</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1437702309762</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6853000" />
+    <option name="totallyTimeSpent" value="6892000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="0" width="1374" height="745" extended-state="6" />
@@ -754,7 +764,8 @@
     <MESSAGE value="Major API Change" />
     <MESSAGE value="Minor POM Edits" />
     <MESSAGE value="Changed Package Structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed Package Structure" />
+    <MESSAGE value="Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -838,11 +849,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/NIOUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.554295">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5834684">
+          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
           <folding>
-            <element signature="e#3397#3398#0" expanded="true" />
-            <element signature="e#3444#3445#0" expanded="true" />
+            <element signature="e#909#910#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+            <element signature="e#1188#1189#0" expanded="true" />
+            <element signature="e#1216#1217#0" expanded="true" />
+            <element signature="e#3371#3372#0" expanded="true" />
+            <element signature="e#3418#3419#0" expanded="true" />
           </folding>
         </state>
       </provider>
