@@ -14,8 +14,8 @@
     limitations under the License.
 */
 
-import com.revtekk.nioflex.nio.NIOServer;
-import com.revtekk.nioflex.nio.utils.NIOUtils;
+import com.revtekk.nioflex.NIOServer;
+import com.revtekk.nioflex.utils.NIOUtils;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

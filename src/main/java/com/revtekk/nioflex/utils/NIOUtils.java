@@ -1,4 +1,4 @@
-package com.revtekk.nioflex.nio.utils;
+package com.revtekk.nioflex.utils;
 
 /*
     Copyright 2015 Mahesh Khanwalkar

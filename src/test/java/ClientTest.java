@@ -14,7 +14,7 @@
     limitations under the License.
 */
 
-import com.revtekk.nioflex.nio.utils.NIOUtils;
+import com.revtekk.nioflex.utils.NIOUtils;
 
 import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;

@@ -1,4 +1,4 @@
-package com.revtekk.nioflex.nio;
+package com.revtekk.nioflex;
 
 /*
     Copyright 2015 Mahesh Khanwalkar
@@ -16,7 +16,7 @@ package com.revtekk.nioflex.nio;
     limitations under the License.
 */
 
-import com.revtekk.nioflex.nio.utils.NIOUtils;
+import com.revtekk.nioflex.utils.NIOUtils;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
