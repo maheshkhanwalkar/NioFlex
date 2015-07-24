@@ -24,8 +24,6 @@ import java.util.HashMap;
 
 public class NIOUtils
 {
-    //private static HashMap<SocketChannel, ByteBuffer> oneByte = new HashMap<SocketChannel, ByteBuffer>();
-
     private SocketChannel channel;
     private ByteBuffer refund;
 
