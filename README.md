@@ -58,4 +58,18 @@ public class EchoServer extends NIOServer
 
 ### Version
 
-The current version of NioFlex is 0.10.0
+The current version of NioFlex is 0.10
+
+### Maven Import
+
+NioFlex has been deployed to the Maven Central Repository. The pom.xml
+dependency is:
+
+```
+<dependency>
+  <groupId>com.revtekk</groupId>
+  <artifactId>nioflex</artifactId>
+  <version>0.10</version>
+</dependency>
+
+```
