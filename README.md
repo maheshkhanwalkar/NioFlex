@@ -51,7 +51,7 @@ public class EchoServer extends NIOServer
     public void handleRead(SocketChannel client, SelectionKey key, SocketUtil util)
     {
         /*
-           This Echo-Server gets UTF-8 Data and echoes it back
+           This Echo-Server gets a UTF-8 String and echoes it back
         */
 
          String data = util.readLine();
