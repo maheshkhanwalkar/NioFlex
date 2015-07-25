@@ -1,13 +1,25 @@
 # NioFlex
 *Flexible NIO Server Building-Blocks for Java*
 
+### Welcome to the 'dev' branch
+
+The NioFlex 'dev' branch is where all the active development occurs. The latest and greatest
+features of NioFlex are staged and developed here before (eventually) making it to the 'master' branch
+when a release is ready to be deployed. 
+
+It is highly recommended that if you want to contribute to NioFlex, please make all edits on the 'dev'
+branch of your fork. This will make the merging from submitted Pull Requests (PR) a lot easier. 
+
+From time to time, the [NioFlex Version](#version) will change as edits will be collected into "release candidates"
+These 'rc's will not be pushed to the Maven Central Repository, however, a .jar will be available for download.
+
 ### Purpose & Functionality
 
 NioFlex allows developers to quickly create Java NIO-driven servers, which typically
 require a lot more work than traditional blocking I/O servers.
 
 NioFlex makes it so that you don't have to write low-level, boilerplate Java NIO code,
-rather you can focus on the server functionality
+rather you can focus on the server functionality.
 
 ### Simple Echo Server
 
@@ -62,7 +74,7 @@ public class EchoServer extends NIOServer
 
 ### Version
 
-The current version of NioFlex is 0.10
+The current dev version of NioFlex is 0.20-rc1 (in development)
 
 ### Maven Import
 
