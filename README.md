@@ -30,7 +30,7 @@ rather you can focus on the server functionality.
 
 **Conceptual/Good Reads**
 
-1. Why is SocketUtil readLine() discouraged?
+1. [Why is SocketUtil readLine() discouraged?](https://gist.github.com/maheshkhanwalkar/5a6e5314f9f8c163e7a4)
 
 
 
