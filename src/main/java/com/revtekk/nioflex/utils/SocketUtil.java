@@ -21,12 +21,12 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
 
-public class SocketUtils
+public class SocketUtil
 {
     private SocketChannel channel;
     private ByteBuffer refund;
 
-    public SocketUtils(SocketChannel channel)
+    public SocketUtil(SocketChannel channel)
     {
         this.channel = channel;
     }
@@ -111,6 +111,63 @@ public class SocketUtils
         byte[] bytes = readBytes(len);
         return new String(bytes, charset);
     }
+
+    /*
+       Warning: readLine() and readLine(NewlineType) implementation is *slow*
+       TODO: Make faster
+    */
+
+    /**
+     * readLine() assumes UTF-8 and \n as newline delimiter
+     * @return a single line of data (as a String)
+     */
+    public String readLine()
+    {
+        StringBuilder line = new StringBuilder();
+        String temp;
+
+        while(!(temp = readString(1, Charset.forName("UTF-8"))).equals("\n"))
+        {
+            line.append(temp);
+        }
+
+        return line.toString();
+    }
+
+    /**
+     * readLine(NewlineType) assumes UTF-8
+     *
+     * @param type what to denote as the end of a line
+     * @return a single line of data (as a String)
+     */
+    public String readLine(NewLineType type)
+    {
+        StringBuilder line = new StringBuilder();
+        String t1, t2 = "";
+
+        if(type != NewLineType.CRLF)
+        {
+            String compare = type == NewLineType.CR ? "\r" : "\n";
+
+            while (!(t1 = new String(readBytes(1), Charset.forName("UTF-8"))).equals(compare))
+            {
+                line.append(t1);
+            }
+
+            return line.toString();
+        }
+
+        while (!(
+           (t1 = readString(1, Charset.forName("UTF-8"))).equals("\r") &&
+               (t2 = readString(1, Charset.forName("UTF-8"))).equals("\n")))
+        {
+            line.append(t1);
+            line.append(t2);
+        }
+
+        return line.toString();
+    }
+
 
     /**
      * Reads 4 bytes (int) from a SocketChannel, and returns

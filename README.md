@@ -44,7 +44,7 @@ public class EchoServer extends NIOServer
     }
     
     @Override
-    public void handleRead(SocketChannel client, SelectionKey key, SocketUtils util)
+    public void handleRead(SocketChannel client, SelectionKey key, SocketUtil util)
     {
         /*
            This Echo-Server first receives the length from the client,

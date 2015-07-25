@@ -16,7 +16,7 @@ package com.revtekk.nioflex;
     limitations under the License.
 */
 
-import com.revtekk.nioflex.utils.SocketUtils;
+import com.revtekk.nioflex.utils.SocketUtil;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -79,7 +79,7 @@ public abstract class NIOServer
     /**
      * Tell the server to shutdown
      */
-    protected void scheduleShutdown()
+    public void scheduleShutdown()
     {
         SHUTDOWN = true;
     }
@@ -95,9 +95,9 @@ public abstract class NIOServer
         private SocketChannel client;
         private SelectionKey key;
 
-        private SocketUtils util;
+        private SocketUtil util;
 
-        public IOProcessor(SocketChannel client, SelectionKey key, SocketUtils util)
+        public IOProcessor(SocketChannel client, SelectionKey key, SocketUtil util)
         {
             this.client = client;
             this.key = key;
@@ -131,7 +131,7 @@ public abstract class NIOServer
      * @param key current SelectionKey
      * @param util NIOUtils for easy-to-use Socket I/O
      */
-    public abstract void handleRead(SocketChannel client, SelectionKey key, SocketUtils util);
+    public abstract void handleRead(SocketChannel client, SelectionKey key, SocketUtil util);
 
     /**
      * NIO Event Handler (e.g. Accepting Clients & Task Scheduling)
@@ -182,7 +182,7 @@ public abstract class NIOServer
 
                         oneByte.flip();
 
-                        SocketUtils util = new SocketUtils(client);
+                        SocketUtil util = new SocketUtil(client);
                         util.refund(oneByte);
 
                         key.interestOps(0);
@@ -235,6 +235,24 @@ public abstract class NIOServer
             e.printStackTrace();
         }
 
+    }
+
+    /**
+     * Runs launch() on a new thread
+     * @return Thread returns the Thread that the server was launched on
+     */
+    public final Thread launchThread()
+    {
+        Thread t = new Thread(new Runnable()
+        {
+            public void run()
+            {
+                launch();
+            }
+        });
+
+        t.start();
+        return t;
     }
 
     /**
