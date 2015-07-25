@@ -25,7 +25,7 @@ rather you can focus on the server functionality.
 
 ```java
 import com.revtekk.nioflex.NIOServer;
-import com.revtekk.nioflex.utils.SocketUtils;
+import com.revtekk.nioflex.utils.SocketUtil;
 
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
