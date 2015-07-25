@@ -82,9 +82,9 @@ public class EchoServer extends NIOServer
 
 
 
-| Stable Version   | Release Date  | Download    | 
-| ---------------- | ------------- | ----------- |
-| 0.10             | [7/23/15]     | [TBD]       |
+| Stable Version   | Release Date  | Download                                                                               | 
+| ---------------- | ------------- | -------------------------------------------------------------------------------------- |
+| 0.10             | [7/23/15]     | [[jar](http://central.maven.org/maven2/com/revtekk/nioflex/0.10/nioflex-0.10.jar)]     |
 
 ### Maven Import
 
