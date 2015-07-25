@@ -23,7 +23,7 @@ rather you can focus on the server functionality.
 
 ### Simple Echo Server
 
-```
+```java
 import com.revtekk.nioflex.NIOServer;
 import com.revtekk.nioflex.utils.SocketUtils;
 
@@ -74,13 +74,15 @@ public class EchoServer extends NIOServer
 
 ### Version
 
-Mainline Version
+| Mainline Version | Release Date  | Download    | 
+| ---------------- | ------------- | ----------- |
+| 0.20-rc1         | [TBD]         | [TBD]       |
 
-* 0.20-rc1      [TBD]
 
-Stable Version
 
-* 0.10          [7/23/15]
+| Stable Version   | Release Date  | Download    | 
+| ---------------- | ------------- | ----------- |
+| 0.10             | [7/23/15]     | [TBD]       |
 
 ### Maven Import
 
