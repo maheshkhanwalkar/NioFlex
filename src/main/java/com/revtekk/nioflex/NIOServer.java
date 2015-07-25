@@ -16,7 +16,7 @@ package com.revtekk.nioflex;
     limitations under the License.
 */
 
-import com.revtekk.nioflex.utils.NIOUtils;
+import com.revtekk.nioflex.utils.SocketUtils;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -95,9 +95,9 @@ public abstract class NIOServer
         private SocketChannel client;
         private SelectionKey key;
 
-        private NIOUtils util;
+        private SocketUtils util;
 
-        public IOProcessor(SocketChannel client, SelectionKey key, NIOUtils util)
+        public IOProcessor(SocketChannel client, SelectionKey key, SocketUtils util)
         {
             this.client = client;
             this.key = key;
@@ -131,7 +131,7 @@ public abstract class NIOServer
      * @param key current SelectionKey
      * @param util NIOUtils for easy-to-use Socket I/O
      */
-    public abstract void handleRead(SocketChannel client, SelectionKey key, NIOUtils util);
+    public abstract void handleRead(SocketChannel client, SelectionKey key, SocketUtils util);
 
     /**
      * NIO Event Handler (e.g. Accepting Clients & Task Scheduling)
@@ -182,7 +182,7 @@ public abstract class NIOServer
 
                         oneByte.flip();
 
-                        NIOUtils util = new NIOUtils(client);
+                        SocketUtils util = new SocketUtils(client);
                         util.refund(oneByte);
 
                         key.interestOps(0);

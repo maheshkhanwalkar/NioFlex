@@ -21,12 +21,12 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
 
-public class NIOUtils
+public class SocketUtils
 {
     private SocketChannel channel;
     private ByteBuffer refund;
 
-    public NIOUtils(SocketChannel channel)
+    public SocketUtils(SocketChannel channel)
     {
         this.channel = channel;
     }

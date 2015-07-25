@@ -15,7 +15,7 @@
 */
 
 import com.revtekk.nioflex.NIOServer;
-import com.revtekk.nioflex.utils.NIOUtils;
+import com.revtekk.nioflex.utils.SocketUtils;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -38,7 +38,7 @@ public class ServerTest extends NIOServer
     }
 
     @Override
-    public void handleRead(SocketChannel client, SelectionKey key, NIOUtils util)
+    public void handleRead(SocketChannel client, SelectionKey key, SocketUtils util)
     {
         try
         {

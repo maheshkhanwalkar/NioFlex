@@ -14,7 +14,7 @@
     limitations under the License.
 */
 
-import com.revtekk.nioflex.utils.NIOUtils;
+import com.revtekk.nioflex.utils.SocketUtils;
 
 import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
@@ -29,7 +29,7 @@ public class ClientTest
             SocketChannel client = SocketChannel.open(new InetSocketAddress("localhost", 7337));
             client.configureBlocking(true);
 
-            NIOUtils util = new NIOUtils(client);
+            SocketUtils util = new SocketUtils(client);
 
             for(long i = 0; i < 65536; i++)
             {

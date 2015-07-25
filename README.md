@@ -25,7 +25,7 @@ rather you can focus on the server functionality.
 
 ```
 import com.revtekk.nioflex.NIOServer;
-import com.revtekk.nioflex.utils.NIOUtils;
+import com.revtekk.nioflex.utils.SocketUtils;
 
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
@@ -44,7 +44,7 @@ public class EchoServer extends NIOServer
     }
     
     @Override
-    public void handleRead(SocketChannel client, SelectionKey key, NIOUtils util)
+    public void handleRead(SocketChannel client, SelectionKey key, SocketUtils util)
     {
         /*
            This Echo-Server first receives the length from the client,
@@ -74,7 +74,13 @@ public class EchoServer extends NIOServer
 
 ### Version
 
-The current dev version of NioFlex is 0.20-rc1 (in development)
+Mainline Version
+
+* 0.20-rc1      [TBD]
+
+Stable Version
+
+* 0.10          [7/23/15]
 
 ### Maven Import
 
