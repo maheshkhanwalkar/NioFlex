@@ -81,6 +81,9 @@ The current dev version of NioFlex is 0.20-rc1 (in development)
 NioFlex has been deployed to the Maven Central Repository. The pom.xml
 dependency is:
 
+**Note:** This only applies to stable, non-dev releases (see master branch). No release candidate will
+be pushed to the Maven Central Repository. 
+
 ```
 <dependency>
   <groupId>com.revtekk</groupId>
