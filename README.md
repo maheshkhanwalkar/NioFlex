@@ -23,7 +23,16 @@ rather you can focus on the server functionality.
 
 ### NioFlex Tutorials
 
+**Basic/Intro Reads**
+
 1. [Introduction to NioFlex](https://gist.github.com/maheshkhanwalkar/e659a00dc93b4b01eb25)
+2. Using the SocketUtil Helper Class
+
+**Conceptual/Good Reads**
+
+1. Why is SocketUtil readLine() discouraged?
+
+
 
 ### Simple Echo Server
 
@@ -51,7 +60,10 @@ public class EchoServer extends NIOServer
     public void handleRead(SocketChannel client, SelectionKey key, SocketUtil util)
     {
         /*
-           This Echo-Server gets a UTF-8 String and echoes it back
+           This Echo-Server gets a UTF-8 String and echoes it back.
+           Note: readLine() is discouraged. See NioFlex Tutorials
+
+           readLine() is only shown here because of its simplicity.
         */
 
          String data = util.readLine();

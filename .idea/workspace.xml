@@ -103,8 +103,8 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5918605">
-              <caret line="53" column="46" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.40813953">
+              <caret line="27" column="91" selection-start-line="27" selection-start-column="91" selection-end-line="27" selection-end-column="91" />
               <folding />
             </state>
           </provider>
@@ -881,7 +881,7 @@
       <workItem from="1434937878568" duration="75000" />
       <workItem from="1437528019667" duration="10678000" />
       <workItem from="1437854111072" duration="5423000" />
-      <workItem from="1437862500930" duration="2348000" />
+      <workItem from="1437862500930" duration="2692000" />
     </task>
     <task id="LOCAL-00001" summary="Removed documentation">
       <created>1437528102026</created>
@@ -985,11 +985,17 @@
       <option name="project" value="LOCAL" />
       <updated>1437863006940</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Minor README Edit">
+      <created>1437864889090</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1437864889090</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18524000" />
+    <option name="totallyTimeSpent" value="18868000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -1052,7 +1058,8 @@
     <MESSAGE value="Implemented readLine( ) and Renamed SocketUtils -&gt; SocketUtil" />
     <MESSAGE value="Updated README" />
     <MESSAGE value="Fixed README Error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed README Error" />
+    <MESSAGE value="Minor README Edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor README Edit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1280,8 +1287,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5918605">
-          <caret line="53" column="46" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.40813953">
+          <caret line="27" column="91" selection-start-line="27" selection-start-column="91" selection-end-line="27" selection-end-column="91" />
           <folding />
         </state>
       </provider>
