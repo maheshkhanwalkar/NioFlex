@@ -122,7 +122,7 @@ public abstract class NIOServer
      * @param client SocketChannel corresponding to the client
      * @param key current SelectionKey
      */
-    public abstract void handleAccept(SocketChannel client, SelectionKey key);
+    public void handleAccept(SocketChannel client, SelectionKey key) {}
 
     /**
      * This method is invoked once data can be read from the client.

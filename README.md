@@ -47,26 +47,13 @@ public class EchoServer extends NIOServer
     public void handleRead(SocketChannel client, SelectionKey key, SocketUtil util)
     {
         /*
-           This Echo-Server first receives the length from the client,
-           then the actual data
-         */
-
-        int len = util.readInt();
-        
-        /* 
-           This Echo-Server only accepts data of size 4096 
-           (arbitrarily chosen) bytes or less
+           This Echo-Server gets UTF-8 Data and echoes it back
         */
-        
-        if(len <= 4096)
-        {
-            String text = util.readString(len);
-            System.out.println("Received: " + text);
-            
-            /* Time to write it back */
-            util.writeInt(len);
-            util.writeString(text);
-        }
+
+         String data = util.readLine();
+         System.out.println("Data Received: " + data);
+
+         util.writeString(data + "\n");
     }
 }
 ```
