@@ -16,12 +16,12 @@ package com.revtekk.nioflex;
     limitations under the License.
 */
 
+import com.revtekk.nioflex.utils.NewLineType;
 import com.revtekk.nioflex.utils.SocketUtil;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
-import java.nio.charset.Charset;
 
 public class ReadLineLaunch
 {
@@ -33,11 +33,12 @@ public class ReadLineLaunch
         SocketChannel client = SocketChannel.open(new InetSocketAddress("localhost", 5577));
         SocketUtil util = new SocketUtil(client);
 
-        util.writeString("Hello world\n", Charset.forName("UTF-8"));
-        util.writeString("Another test\r\n", Charset.forName("UTF-8"));
+        util.writeLine("Hello world");
+        util.writeLine("Another test", NewLineType.CRLF);
 
-        util.writeString("Yet another\r", Charset.forName("UTF-8"));
-        util.writeString("Last thing\n", Charset.forName("UTF-8"));
+        util.writeLine("Yet another", NewLineType.CR);
+        util.writeLine("Last thing", NewLineType.LF);
+
         client.close();
 
         /* Don't kill the server immediately, wait 100ms */
