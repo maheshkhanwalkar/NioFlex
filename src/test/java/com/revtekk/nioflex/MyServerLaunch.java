@@ -16,28 +16,31 @@ package com.revtekk.nioflex;
     limitations under the License.
 */
 
-import com.revtekk.nioflex.utils.NewLineType;
 import com.revtekk.nioflex.utils.SocketUtil;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
 
-public class ReadLineLaunch
+public class MyServerLaunch
 {
     public static void main(String[] args) throws IOException, InterruptedException
     {
-        ReadLineServer server = new ReadLineServer(5577);
+        MyServer server = new MyServer(5577);
+       // server.setSecurity(new BufferSecurity(50, RejectionPolicy.READ_UNTIL_FULL));
+
         Thread t = server.launchThread();
 
         SocketChannel client = SocketChannel.open(new InetSocketAddress("localhost", 5577));
         SocketUtil util = new SocketUtil(client);
 
-        util.writeLine("Hello world");
-        util.writeLine("Another test", NewLineType.CRLF);
+        String t1 = "Hello world", t2 = "Another test";
 
-        util.writeLine("Yet another", NewLineType.CR);
-        util.writeLine("Last thing", NewLineType.LF);
+        util.writeInt(t1.length());
+        util.writeString(t1);
+
+        util.writeInt(t2.length());
+        util.writeString(t2);
 
         client.close();
 

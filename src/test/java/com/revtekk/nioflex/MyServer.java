@@ -16,15 +16,14 @@ package com.revtekk.nioflex;
     limitations under the License.
 */
 
-import com.revtekk.nioflex.utils.NewLineType;
 import com.revtekk.nioflex.utils.SocketUtil;
 
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 
-public class ReadLineServer extends NIOServer
+public class MyServer extends NIOServer
 {
-    public ReadLineServer(int port)
+    public MyServer(int port)
     {
         super(port);
     }
@@ -38,11 +37,6 @@ public class ReadLineServer extends NIOServer
     @Override
     public void handleRead(SocketChannel client, SelectionKey key, SocketUtil util)
     {
-        /* Test readLine() */
-        System.out.println("Data #1: " + util.readLine());
-        System.out.println("Data #2: " + util.readLine(NewLineType.CRLF));
-
-        System.out.println("Data #3: " + util.readLine(NewLineType.CR));
-        System.out.println("Data #4: " + util.readLine(NewLineType.LF));
+        System.out.println("Data: " + util.readString(util.readInt()));
     }
 }
