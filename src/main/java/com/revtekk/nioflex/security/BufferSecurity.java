@@ -27,16 +27,29 @@ public class BufferSecurity
         this.policy = policy;
     }
 
+    /**
+     * @return the read-rejection policy
+     */
     public RejectionPolicy getPolicy()
     {
         return policy;
     }
 
+    /**
+     * @return the maximum allowed buffer size
+     */
     public int getMax()
     {
         return maxSize;
     }
 
+    /**
+     * This method checks whether the inputted
+     * length adheres to the maximum buffer size.
+     *
+     * @param len a sample buffer length
+     * @return whether the length is acceptable
+     */
     public boolean isAcceptable(int len)
     {
         return len <= maxSize;
