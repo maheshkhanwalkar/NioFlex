@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7aea33a0-d75d-42ef-8185-ed9c106ae8e0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/security/BufferSecurity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/MyServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/MyServerLaunch.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/security/RejectionPolicy.java" />
-      <change type="DELETED" beforePath="C:\Users\Mahesh\IdeaProjects\NioFlex-dev\src\test\java\com\revtekk\nioflex\ReadlineLaunch.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Mahesh\IdeaProjects\NioFlex-dev\src\test\java\com\revtekk\nioflex\ReadlineServer.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/NIOServer.java" afterPath="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/NIOServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/MyServerLaunch.java" afterPath="$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/MyServerLaunch.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -47,17 +41,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+              <caret line="50" column="7" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1142#1143#0" expanded="true" />
                 <element signature="e#1180#1181#0" expanded="true" />
                 <element signature="e#1570#1571#0" expanded="true" />
                 <element signature="e#1598#1599#0" expanded="true" />
-                <element signature="e#2681#2682#0" expanded="true" />
-                <element signature="e#2727#2728#0" expanded="true" />
-                <element signature="e#7134#7135#0" expanded="true" />
-                <element signature="e#7176#7177#0" expanded="true" />
+                <element signature="e#6595#6596#0" expanded="true" />
+                <element signature="e#6641#6642#0" expanded="true" />
+                <element signature="e#7452#7453#0" expanded="true" />
+                <element signature="e#7494#7495#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -67,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/security/BufferSecurity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
               <folding>
                 <element signature="e#917#918#0" expanded="true" />
                 <element signature="e#946#947#0" expanded="true" />
@@ -94,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/NIOServer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="196" column="45" selection-start-line="196" selection-start-column="45" selection-end-line="196" selection-end-column="45" />
+              <caret line="128" column="7" selection-start-line="128" selection-start-column="7" selection-end-line="128" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2188#2189#0" expanded="true" />
@@ -123,7 +117,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/MyServerLaunch.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.14539006">
-              <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+              <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -194,9 +188,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/security/BufferSecurity.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/ReadLineServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/NIOServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtil.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/ReadLineLaunch.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/MyServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtil.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/MyServerLaunch.java" />
       </list>
     </option>
@@ -837,7 +831,7 @@
       <workItem from="1437528019667" duration="10678000" />
       <workItem from="1437854111072" duration="5423000" />
       <workItem from="1437862500930" duration="6201000" />
-      <workItem from="1437924236113" duration="3883000" />
+      <workItem from="1437924236113" duration="4730000" />
     </task>
     <task id="LOCAL-00001" summary="Removed documentation">
       <created>1437528102026</created>
@@ -977,11 +971,17 @@
       <option name="project" value="LOCAL" />
       <updated>1437930933708</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added Buffer Security">
+      <created>1437933618948</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1437933618948</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26260000" />
+    <option name="totallyTimeSpent" value="27107000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -1051,10 +1051,13 @@
     <MESSAGE value="Fixed Class Name Issue" />
     <MESSAGE value="Removed redundant code" />
     <MESSAGE value="Updated Documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Documentation" />
+    <MESSAGE value="Added Buffer Security" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Buffer Security" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1080,17 +1083,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="298" column="9" selection-start-line="298" selection-start-column="9" selection-end-line="298" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#1570#1571#0" expanded="true" />
             <element signature="e#1598#1599#0" expanded="true" />
-            <element signature="e#1257#1258#0" expanded="true" />
-            <element signature="e#1329#1330#0" expanded="true" />
-            <element signature="e#5819#5820#0" expanded="true" />
-            <element signature="e#5864#5865#0" expanded="true" />
-            <element signature="e#6277#6278#0" expanded="true" />
-            <element signature="e#6323#6324#0" expanded="true" />
-            <element signature="e#7134#7135#0" expanded="true" />
-            <element signature="e#7176#7177#0" expanded="true" />
+            <element signature="e#2709#2710#0" expanded="false" />
+            <element signature="e#2836#2837#0" expanded="false" />
+            <element signature="e#6137#6138#0" expanded="false" />
+            <element signature="e#6182#6183#0" expanded="false" />
+            <element signature="e#6367#6368#0" expanded="false" />
+            <element signature="e#6414#6415#0" expanded="false" />
+            <element signature="e#7452#7453#0" expanded="true" />
+            <element signature="e#7494#7495#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1146,17 +1148,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#1570#1571#0" expanded="true" />
             <element signature="e#1598#1599#0" expanded="true" />
-            <element signature="e#1257#1258#0" expanded="true" />
-            <element signature="e#1329#1330#0" expanded="true" />
-            <element signature="e#5819#5820#0" expanded="true" />
-            <element signature="e#5864#5865#0" expanded="true" />
-            <element signature="e#6277#6278#0" expanded="true" />
-            <element signature="e#6323#6324#0" expanded="true" />
-            <element signature="e#7134#7135#0" expanded="true" />
-            <element signature="e#7176#7177#0" expanded="true" />
+            <element signature="e#2709#2710#0" expanded="false" />
+            <element signature="e#2836#2837#0" expanded="false" />
+            <element signature="e#6137#6138#0" expanded="false" />
+            <element signature="e#6182#6183#0" expanded="false" />
+            <element signature="e#6367#6368#0" expanded="false" />
+            <element signature="e#6414#6415#0" expanded="false" />
+            <element signature="e#7452#7453#0" expanded="true" />
+            <element signature="e#7494#7495#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1224,17 +1225,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="94" column="37" selection-start-line="94" selection-start-column="37" selection-end-line="94" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#1570#1571#0" expanded="true" />
             <element signature="e#1598#1599#0" expanded="true" />
-            <element signature="e#1257#1258#0" expanded="true" />
-            <element signature="e#1329#1330#0" expanded="true" />
-            <element signature="e#5819#5820#0" expanded="true" />
-            <element signature="e#5864#5865#0" expanded="true" />
-            <element signature="e#6277#6278#0" expanded="true" />
-            <element signature="e#6323#6324#0" expanded="true" />
-            <element signature="e#7134#7135#0" expanded="true" />
-            <element signature="e#7176#7177#0" expanded="true" />
+            <element signature="e#2709#2710#0" expanded="false" />
+            <element signature="e#2836#2837#0" expanded="false" />
+            <element signature="e#6137#6138#0" expanded="false" />
+            <element signature="e#6182#6183#0" expanded="false" />
+            <element signature="e#6367#6368#0" expanded="false" />
+            <element signature="e#6414#6415#0" expanded="false" />
+            <element signature="e#7452#7453#0" expanded="true" />
+            <element signature="e#7494#7495#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1295,58 +1295,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1142#1143#0" expanded="true" />
-            <element signature="e#1180#1181#0" expanded="true" />
-            <element signature="e#1570#1571#0" expanded="true" />
-            <element signature="e#1598#1599#0" expanded="true" />
-            <element signature="e#2681#2682#0" expanded="true" />
-            <element signature="e#2727#2728#0" expanded="true" />
-            <element signature="e#7134#7135#0" expanded="true" />
-            <element signature="e#7176#7177#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/security/BufferSecurity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#917#918#0" expanded="true" />
-            <element signature="e#946#947#0" expanded="true" />
-            <element signature="e#977#978#0" expanded="true" />
-            <element signature="e#1007#1008#0" expanded="true" />
-            <element signature="e#1055#1056#0" expanded="true" />
-            <element signature="e#1092#1093#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/security/RejectionPolicy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/NIOServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="196" column="45" selection-start-line="196" selection-start-column="45" selection-end-line="196" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2188#2189#0" expanded="true" />
-            <element signature="e#2217#2218#0" expanded="true" />
-            <element signature="e#7174#7175#0" expanded="true" />
-            <element signature="e#7214#7215#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1361,10 +1314,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/NIOServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="128" column="7" selection-start-line="128" selection-start-column="7" selection-end-line="128" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2188#2189#0" expanded="true" />
+            <element signature="e#2217#2218#0" expanded="true" />
+            <element signature="e#7174#7175#0" expanded="true" />
+            <element signature="e#7214#7215#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="7" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1142#1143#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
+            <element signature="e#1570#1571#0" expanded="true" />
+            <element signature="e#1598#1599#0" expanded="true" />
+            <element signature="e#6595#6596#0" expanded="true" />
+            <element signature="e#6641#6642#0" expanded="true" />
+            <element signature="e#7452#7453#0" expanded="true" />
+            <element signature="e#7494#7495#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/security/BufferSecurity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+          <folding>
+            <element signature="e#917#918#0" expanded="true" />
+            <element signature="e#946#947#0" expanded="true" />
+            <element signature="e#977#978#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1055#1056#0" expanded="true" />
+            <element signature="e#1092#1093#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/MyServerLaunch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14539006">
-          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
           <folding />
         </state>
       </provider>

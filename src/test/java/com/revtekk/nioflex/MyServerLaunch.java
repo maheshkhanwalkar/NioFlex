@@ -16,6 +16,8 @@ package com.revtekk.nioflex;
     limitations under the License.
 */
 
+import com.revtekk.nioflex.security.BufferSecurity;
+import com.revtekk.nioflex.security.RejectionPolicy;
 import com.revtekk.nioflex.utils.SocketUtil;
 
 import java.io.IOException;
@@ -27,7 +29,7 @@ public class MyServerLaunch
     public static void main(String[] args) throws IOException, InterruptedException
     {
         MyServer server = new MyServer(5577);
-       // server.setSecurity(new BufferSecurity(50, RejectionPolicy.READ_UNTIL_FULL));
+        server.setSecurity(new BufferSecurity(50, RejectionPolicy.REJECT_READ));
 
         Thread t = server.launchThread();
 

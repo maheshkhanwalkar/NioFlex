@@ -65,7 +65,9 @@ public class SocketUtil
         if(!security.isAcceptable(len))
         {
             if(security.getPolicy() == RejectionPolicy.REJECT_READ)
+            {
                 return null;
+            }
 
             len = security.getMax();
         }
@@ -103,7 +105,12 @@ public class SocketUtil
      */
     public byte[] readBytes(int len)
     {
-        return readBuffer(len).array();
+        ByteBuffer buf = readBuffer(len);
+
+        if(buf != null)
+            return buf.array();
+
+        return null;
     }
 
     /**
@@ -116,7 +123,10 @@ public class SocketUtil
     public String readString(int len)
     {
         byte[] bytes = readBytes(len);
-        return new String(bytes); //uses default encoding
+        if(bytes != null)
+            return new String(bytes); //uses default encoding
+
+        return null;
     }
 
     /**
@@ -211,6 +221,12 @@ public class SocketUtil
 
             line.append(t2);
             len++;
+        }
+
+        if(!security.isAcceptable(len) &&
+                security.getPolicy() == RejectionPolicy.REJECT_READ)
+        {
+            return null;
         }
 
         return line.toString();
