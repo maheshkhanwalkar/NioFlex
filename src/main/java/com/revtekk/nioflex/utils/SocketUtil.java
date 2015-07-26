@@ -202,6 +202,19 @@ public class SocketUtil
         return readBuffer(8).getLong();
     }
 
+    public void writeBuffer(ByteBuffer buf)
+    {
+        try
+        {
+            channel.write(buf);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
     /**
      * Write byte[] to a SocketChannel
      * @param bytes bytes to be written
@@ -212,15 +225,7 @@ public class SocketUtil
         buf.put(bytes);
 
         buf.flip();
-
-        try
-        {
-            channel.write(buf);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        writeBuffer(buf);
     }
 
     /**
@@ -288,15 +293,7 @@ public class SocketUtil
         buf.putInt(num);
 
         buf.flip();
-
-        try
-        {
-            channel.write(buf);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        writeBuffer(buf);
     }
 
     /**
@@ -309,15 +306,7 @@ public class SocketUtil
         buf.putShort(num);
 
         buf.flip();
-
-        try
-        {
-            channel.write(buf);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        writeBuffer(buf);
     }
 
     /**
@@ -330,14 +319,6 @@ public class SocketUtil
         buf.putLong(num);
 
         buf.flip();
-
-        try
-        {
-            channel.write(buf);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        writeBuffer(buf);
     }
 }
