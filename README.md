@@ -32,8 +32,6 @@ rather you can focus on the server functionality.
 
 1. [Why is SocketUtil readLine() discouraged?](https://gist.github.com/maheshkhanwalkar/5a6e5314f9f8c163e7a4)
 
-
-
 ### Simple Echo Server
 
 ```java
