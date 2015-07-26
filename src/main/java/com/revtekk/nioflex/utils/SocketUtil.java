@@ -202,6 +202,10 @@ public class SocketUtil
         return readBuffer(8).getLong();
     }
 
+    /**
+     * Write ByteBuffer data to a SocketChannel
+     * @param buf data contained in a ByteBuffer
+     */
     public void writeBuffer(ByteBuffer buf)
     {
         try
