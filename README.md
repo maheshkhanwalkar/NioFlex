@@ -59,15 +59,15 @@ public class EchoServer extends NIOServer
     {
         /*
            This Echo-Server gets a UTF-8 String and echoes it back.
-           Note: readLine() is discouraged. See NioFlex Tutorials
+           Note: readLine() and writeLine() are discouraged. See NioFlex Tutorials
 
-           readLine() is only shown here because of its simplicity.
+           readLine() and writeLine() are only shown here for simplicity.
         */
 
          String data = util.readLine();
          System.out.println("Data Received: " + data);
 
-         util.writeString(data + "\n");
+         util.writeLine(data);
     }
 }
 ```

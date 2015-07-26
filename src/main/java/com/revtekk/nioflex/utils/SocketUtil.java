@@ -247,6 +247,38 @@ public class SocketUtil
     }
 
     /**
+     * Writes a String (UTF-8 encoded) to a SocketChannel and appends a
+     * newline (\n)
+     *
+     * @param str String to write
+     */
+    public void writeLine(String str)
+    {
+        writeString(str + "\n", Charset.forName("UTF-8"));
+    }
+
+    /**
+     * Writes a String (UTF-8 encoded) to a SocketChannel and appends a
+     * newline (\n, \r, or \r\n)
+     *
+     * @param str String to write
+     * @param type Type of newline to use
+     */
+    public void writeLine(String str, NewLineType type)
+    {
+        StringBuilder builder = new StringBuilder(str);
+
+        if(type == NewLineType.CR)
+            builder.append("\r");
+        if(type == NewLineType.LF)
+            builder.append("\n");
+        if(type == NewLineType.CRLF)
+            builder.append("\r\n");
+
+        writeString(builder.toString(), Charset.forName("UTF-8"));
+    }
+
+    /**
      * Write a integer to a SocketChannel
      * @param num int to write
      */
