@@ -26,7 +26,7 @@ rather you can focus on the server functionality.
 **Basic/Intro Reads**
 
 1. [Introduction to NioFlex](https://gist.github.com/maheshkhanwalkar/e659a00dc93b4b01eb25)
-2. Using the SocketUtil Helper Class
+2. [Using the SocketUtil Helper Class](https://gist.github.com/maheshkhanwalkar/534c7e4f6b0cd1ceb5df)
 
 **Conceptual/Good Reads**
 
