@@ -16,9 +16,6 @@ package com.revtekk.nioflex.utils;
     limitations under the License.
 */
 
-import com.revtekk.nioflex.security.BufferSecurity;
-import com.revtekk.nioflex.security.RejectionPolicy;
-
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
@@ -29,19 +26,11 @@ public class SocketUtil
     private SocketChannel channel;
     private ByteBuffer refund;
 
-    private BufferSecurity security = new BufferSecurity(Integer.MAX_VALUE,
-            RejectionPolicy.READ_UNTIL_FULL);
-
     public SocketUtil(SocketChannel channel)
     {
         this.channel = channel;
     }
 
-    public SocketUtil(SocketChannel channel, BufferSecurity security)
-    {
-        this.channel = channel;
-        this.security = security;
-    }
 
     /**
      * Refunds a ByteBuffer that will be used when the next call
@@ -62,16 +51,6 @@ public class SocketUtil
      */
     public ByteBuffer readBuffer(int len)
     {
-        if(!security.isAcceptable(len))
-        {
-            if(security.getPolicy() == RejectionPolicy.REJECT_READ)
-            {
-                return null;
-            }
-
-            len = security.getMax();
-        }
-
         ByteBuffer buffer = ByteBuffer.allocate(len);
 
         if(refund != null)
@@ -159,17 +138,9 @@ public class SocketUtil
 
         int len = 1;
 
-        while(security.isAcceptable(len) &&
-            !(temp = readString(1, Charset.forName("UTF-8"))).equals("\n"))
+        while (!(temp = readString(1, Charset.forName("UTF-8"))).equals("\n"))
         {
-            len++;
             line.append(temp);
-        }
-
-        if(!security.isAcceptable(len) &&
-                security.getPolicy() == RejectionPolicy.REJECT_READ)
-        {
-            return null;
         }
 
         return line.toString();
@@ -186,48 +157,27 @@ public class SocketUtil
         StringBuilder line = new StringBuilder();
         String t1, t2 = "";
 
-        int len = 1;
-
         if(type != NewLineType.CRLF)
         {
             String compare = type == NewLineType.CR ? "\r" : "\n";
 
-            while (security.isAcceptable(len) &&
-                    !(t1 = new String(readBytes(1), Charset.forName("UTF-8"))).equals(compare))
+            while (!(t1 = new String(readBytes(1), Charset.forName("UTF-8"))).equals(compare))
             {
                 line.append(t1);
-                len++;
-            }
-
-            if(!security.isAcceptable(len) &&
-                    security.getPolicy() == RejectionPolicy.REJECT_READ)
-            {
-                return null;
             }
 
             return line.toString();
         }
 
-        while (security.isAcceptable(len) && !(
-           (t1 = readString(1, Charset.forName("UTF-8"))).equals("\r") &&
-               (t2 = readString(1, Charset.forName("UTF-8"))).equals("\n"))
+        while ( !((t1 = readString(1, Charset.forName("UTF-8"))).equals("\r") &&
+                (t2 = readString(1, Charset.forName("UTF-8"))).equals("\n"))
                    )
         {
             line.append(t1);
-            len++;
-
-            if(!security.isAcceptable(len))
-                break;
-
             line.append(t2);
-            len++;
+
         }
 
-        if(!security.isAcceptable(len) &&
-                security.getPolicy() == RejectionPolicy.REJECT_READ)
-        {
-            return null;
-        }
 
         return line.toString();
     }

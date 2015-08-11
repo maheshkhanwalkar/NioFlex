@@ -16,7 +16,6 @@ package com.revtekk.nioflex;
     limitations under the License.
 */
 
-import com.revtekk.nioflex.security.BufferSecurity;
 import com.revtekk.nioflex.utils.SocketUtil;
 
 import java.io.IOException;
@@ -70,11 +69,6 @@ public abstract class NIOServer
      */
     private volatile boolean SHUTDOWN = false;
 
-    /**
-     * Defines the maximum read buffer size
-     * and read-rejection policy
-     */
-    protected BufferSecurity security;
 
     public NIOServer(int port)
     {
@@ -186,13 +180,7 @@ public abstract class NIOServer
                             continue;
 
                         oneByte.flip();
-
-                        SocketUtil util;
-
-                        if(security != null)
-                            util = new SocketUtil(client, security);
-                        else
-                            util = new SocketUtil(client);
+                        SocketUtil util = new SocketUtil(client);
 
                         util.refund(oneByte);
                         key.interestOps(0);
@@ -262,11 +250,6 @@ public abstract class NIOServer
 
         t.start();
         return t;
-    }
-
-    public void setSecurity(BufferSecurity security)
-    {
-        this.security = security;
     }
 
     /**
