@@ -30,7 +30,7 @@ rather you can focus on the server functionality.
 
 **Conceptual/Good Reads**
 
-1. [Why is SocketUtil readLine() discouraged?](https://gist.github.com/maheshkhanwalkar/5a6e5314f9f8c163e7a4)
+TODO
 
 ### Simple Echo Server
 
@@ -58,16 +58,28 @@ public class EchoServer extends NIOServer
     public void handleRead(SocketChannel client, SelectionKey key, SocketUtil util)
     {
         /*
-           This Echo-Server gets a UTF-8 String and echoes it back.
-           Note: readLine() and writeLine() are discouraged. See NioFlex Tutorials
+           This Echo-Server gets a String and echoes it back.
+           It is first sent the length of the String, and then the actual data
 
-           readLine() and writeLine() are only shown here for simplicity.
+           The server echoes both the length and the String
         */
 
-         String data = util.readLine();
-         System.out.println("Data Received: " + data);
+         int len = util.readInt();
+         if (len > 65536)
+         {
+            //this a random "buffer-maximum"
+            //this server will reject reads of larger than 65,536 bytes
 
-         util.writeLine(data);
+            String data = util.readString(len);
+            System.out.println("Data Received: " + data);
+
+            util.writeInt(len);
+            util.writeString(data);
+         }
+         else
+         {
+            System.out.println("Too large!");
+         }
     }
 }
 ```
