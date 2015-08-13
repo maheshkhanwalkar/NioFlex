@@ -65,15 +65,13 @@ public class SocketUtil
         {
             while((read += channel.read(buffer)) < len - 1);
             buffer.flip();
-
-            return buffer;
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
 
-        return null;
+        return buffer;
     }
 
     /**
