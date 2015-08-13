@@ -16,6 +16,7 @@ package com.revtekk.nioflex;
     limitations under the License.
 */
 
+import com.revtekk.nioflex.policy.ThreadPolicy;
 import com.revtekk.nioflex.utils.SocketUtil;
 
 import java.io.IOException;
@@ -27,6 +28,8 @@ public class MyServerLaunch
     public static void main(String[] args) throws IOException, InterruptedException
     {
         MyServer server = new MyServer(5577);
+        server.setPolicy(ThreadPolicy.THREAD_FOR_ALL);
+
         Thread t = server.launchThread();
 
         Thread.sleep(300);

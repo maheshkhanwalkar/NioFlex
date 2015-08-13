@@ -16,6 +16,7 @@ package com.revtekk.nioflex;
     limitations under the License.
 */
 
+import com.revtekk.nioflex.policy.ThreadPolicy;
 import com.revtekk.nioflex.utils.SocketUtil;
 
 import java.io.IOException;
@@ -63,6 +64,14 @@ public abstract class NIOServer
      */
     protected ThreadPoolExecutor pool = new ThreadPoolExecutor(cores, cores * 2,
             1, TimeUnit.MINUTES, new LinkedBlockingQueue<Runnable>());
+
+
+    /**
+     * The thread-pool utilization policy for the server.
+     * By default, the server uses the thread-pool to run handleRead() only
+     *
+     */
+    protected ThreadPolicy policy = ThreadPolicy.THREAD_FOR_READ;
 
     /**
      * Flag to shutdown the server
@@ -148,12 +157,12 @@ public abstract class NIOServer
 
                 while(itr.hasNext())
                 {
-                    SelectionKey key = itr.next();
+                    final SelectionKey key = itr.next();
                     itr.remove();
 
                     if(key.isAcceptable())
                     {
-                        SocketChannel client = server.accept();
+                        final SocketChannel client = server.accept();
 
                         if(client == null)
                             continue;
@@ -161,7 +170,21 @@ public abstract class NIOServer
                         client.configureBlocking(false);
 
                         client.register(selector, SelectionKey.OP_READ);
-                        handleAccept(client, key);
+
+                        if(policy == ThreadPolicy.THREAD_FOR_ACCEPT ||  policy == ThreadPolicy.THREAD_FOR_ALL)
+                        {
+                            pool.submit(new Runnable()
+                            {
+                                public void run()
+                                {
+                                    handleAccept(client, key);
+                                }
+                            });
+                        }
+                        else
+                        {
+                            handleAccept(client, key);
+                        }
                     }
 
                     if(key.isReadable())
@@ -186,7 +209,11 @@ public abstract class NIOServer
                         key.interestOps(0);
 
                         IOProcessor proc = new IOProcessor(client, key, util);
-                        pool.submit(proc);
+
+                        if(policy == ThreadPolicy.THREAD_FOR_ACCEPT || policy == ThreadPolicy.THREAD_FOR_ALL)
+                            pool.submit(proc);
+                        else
+                            proc.run();
                     }
                 }
 
@@ -277,5 +304,14 @@ public abstract class NIOServer
     private void setSelector(Selector selector)
     {
         this.selector = selector;
+    }
+
+    /**
+     * Sets the thread-pool utilization policy for the server.
+     * @param policy - ThreadPolicy enum
+     */
+    public void setPolicy(ThreadPolicy policy)
+    {
+        this.policy = policy;
     }
 }
