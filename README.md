@@ -90,7 +90,7 @@ public class EchoServer extends NIOServer
 | Mainline Version | Release Date  | Git Commit    |
 | ---------------- | ------------- | ------------- |
 | 0.20-rc2         | [TBD]         | [TBD]         |
-| 0.20-rc1         | [8/13/15]     | [373868caa18fb474b4a83c0acc37555bfd558793](https://github.com/maheshkhanwalkar/NioFlex/commit/373868caa18fb474b4a83c0acc37555bfd558793) |
+| 0.20-rc1         | [8/13/15]     | [TBD]         |
 
 
 | Stable Version   | Release Date  | Download                                                                               | 
