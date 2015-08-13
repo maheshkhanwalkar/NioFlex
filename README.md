@@ -66,7 +66,7 @@ public class EchoServer extends NIOServer
         */
 
          int len = util.readInt();
-         if (len > 65536)
+         if (len < 65536)
          {
             //this a random "buffer-maximum"
             //this server will reject reads of larger than 65,536 bytes
