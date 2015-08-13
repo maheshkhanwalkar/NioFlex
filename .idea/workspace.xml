@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7aea33a0-d75d-42ef-8185-ed9c106ae8e0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NioFlex.iws" />
@@ -78,8 +77,8 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6574395">
-              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5882353">
+              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -713,7 +712,7 @@
       <workItem from="1439261831624" duration="649000" />
       <workItem from="1439432916797" duration="1879000" />
       <workItem from="1439434896986" duration="558000" />
-      <workItem from="1439503924379" duration="911000" />
+      <workItem from="1439503924379" duration="971000" />
     </task>
     <task id="LOCAL-00001" summary="Removed documentation">
       <created>1437528102026</created>
@@ -895,11 +894,17 @@
       <option name="project" value="LOCAL" />
       <updated>1439504754880</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="0.20-rc1 Last Commit">
+      <created>1439504865363</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1439504865363</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31852000" />
+    <option name="totallyTimeSpent" value="31912000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
@@ -945,7 +950,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Minor POM Edits" />
     <MESSAGE value="Changed Package Structure" />
     <MESSAGE value="Cleanup" />
     <MESSAGE value="Cleaning up source" />
@@ -970,7 +974,8 @@
     <MESSAGE value="Removed code" />
     <MESSAGE value="Minor changes" />
     <MESSAGE value="0.20-rc1 finalized, 0.20-rc2 development started" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.20-rc1 finalized, 0.20-rc2 development started" />
+    <MESSAGE value="0.20-rc1 Last Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.20-rc1 Last Commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1411,8 +1416,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6574395">
-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5882353">
+          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
           <folding />
         </state>
       </provider>
