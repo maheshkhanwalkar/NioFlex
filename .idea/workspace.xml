@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7aea33a0-d75d-42ef-8185-ed9c106ae8e0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtil.java" />
+    <list default="true" id="7aea33a0-d75d-42ef-8185-ed9c106ae8e0" name="Default" comment="Minor changes">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NioFlex.iws" />
@@ -30,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -40,9 +41,8 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="119" column="42" selection-start-line="119" selection-start-column="42" selection-end-line="119" selection-end-column="42" />
+              <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#913#914#0" expanded="true" />
                 <element signature="e#951#952#0" expanded="true" />
                 <element signature="e#1193#1194#0" expanded="true" />
@@ -58,13 +58,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NIOServer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NIOServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/NIOServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9339934">
-              <caret line="276" column="47" selection-start-line="276" selection-start-column="47" selection-end-line="276" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="259" column="5" selection-start-line="259" selection-start-column="5" selection-end-line="259" selection-end-column="5" />
               <folding>
-                <element signature="e#6877#6878#0" expanded="true" />
                 <element signature="e#6909#6910#0" expanded="true" />
                 <element signature="e#7096#7097#0" expanded="true" />
                 <element signature="e#7132#7133#0" expanded="true" />
@@ -75,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.51903117">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -91,8 +90,6 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="31" column="68" selection-start-line="31" selection-start-column="68" selection-end-line="31" selection-end-column="68" />
               <folding>
-                <element signature="e#837#838#0" expanded="true" />
-                <element signature="e#864#865#0" expanded="true" />
                 <element signature="e#954#955#0" expanded="true" />
                 <element signature="e#1008#1009#0" expanded="true" />
               </folding>
@@ -142,7 +139,6 @@
         <option value="$PROJECT_DIR$/MavenStuff.txt" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/NIOUtils.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/NewlineType.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/ReadlineClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtils.java" />
@@ -157,8 +153,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/security/BufferSecurity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/NIOServer.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/MyServerLaunch.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtil.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -715,7 +712,7 @@
       <workItem from="1439261831624" duration="649000" />
       <workItem from="1439432916797" duration="1879000" />
       <workItem from="1439434896986" duration="558000" />
-      <workItem from="1439503924379" duration="359000" />
+      <workItem from="1439503924379" duration="769000" />
     </task>
     <task id="LOCAL-00001" summary="Removed documentation">
       <created>1437528102026</created>
@@ -885,11 +882,17 @@
       <option name="project" value="LOCAL" />
       <updated>1439435281087</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Minor changes">
+      <created>1439504311651</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1439504311651</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31300000" />
+    <option name="totallyTimeSpent" value="31710000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
@@ -897,6 +900,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280757" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -917,7 +921,6 @@
       <window_info id="Metrics" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280757" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35962147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -991,7 +994,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#913#914#0" expanded="true" />
             <element signature="e#951#952#0" expanded="true" />
             <element signature="e#1193#1194#0" expanded="true" />
@@ -1011,7 +1013,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="176" column="68" selection-start-line="176" selection-start-column="68" selection-end-line="176" selection-end-column="68" />
           <folding>
-            <element signature="e#6877#6878#0" expanded="true" />
             <element signature="e#6909#6910#0" expanded="true" />
             <element signature="e#7096#7097#0" expanded="true" />
             <element signature="e#7132#7133#0" expanded="true" />
@@ -1034,8 +1035,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="68" selection-start-line="31" selection-start-column="68" selection-end-line="31" selection-end-column="68" />
           <folding>
-            <element signature="e#837#838#0" expanded="true" />
-            <element signature="e#864#865#0" expanded="true" />
             <element signature="e#954#955#0" expanded="true" />
             <element signature="e#1008#1009#0" expanded="true" />
           </folding>
@@ -1063,7 +1062,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#913#914#0" expanded="true" />
             <element signature="e#951#952#0" expanded="true" />
             <element signature="e#1193#1194#0" expanded="true" />
@@ -1091,8 +1089,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="68" selection-start-line="31" selection-start-column="68" selection-end-line="31" selection-end-column="68" />
           <folding>
-            <element signature="e#837#838#0" expanded="true" />
-            <element signature="e#864#865#0" expanded="true" />
             <element signature="e#954#955#0" expanded="true" />
             <element signature="e#1008#1009#0" expanded="true" />
           </folding>
@@ -1128,7 +1124,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="7" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#913#914#0" expanded="true" />
             <element signature="e#951#952#0" expanded="true" />
             <element signature="e#1193#1194#0" expanded="true" />
@@ -1148,7 +1143,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
           <folding>
-            <element signature="e#6877#6878#0" expanded="true" />
             <element signature="e#6909#6910#0" expanded="true" />
             <element signature="e#7096#7097#0" expanded="true" />
             <element signature="e#7132#7133#0" expanded="true" />
@@ -1171,7 +1165,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="298" column="9" selection-start-line="298" selection-start-column="9" selection-end-line="298" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#913#914#0" expanded="true" />
             <element signature="e#951#952#0" expanded="true" />
             <element signature="e#1193#1194#0" expanded="true" />
@@ -1191,7 +1184,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="144" column="34" selection-start-line="144" selection-start-column="34" selection-end-line="144" selection-end-column="34" />
           <folding>
-            <element signature="e#6877#6878#0" expanded="true" />
             <element signature="e#6909#6910#0" expanded="true" />
             <element signature="e#7096#7097#0" expanded="true" />
             <element signature="e#7132#7133#0" expanded="true" />
@@ -1230,7 +1222,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#913#914#0" expanded="true" />
             <element signature="e#951#952#0" expanded="true" />
             <element signature="e#1193#1194#0" expanded="true" />
@@ -1250,7 +1241,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="121" column="62" selection-start-line="121" selection-start-column="62" selection-end-line="121" selection-end-column="62" />
           <folding>
-            <element signature="e#6877#6878#0" expanded="true" />
             <element signature="e#6909#6910#0" expanded="true" />
             <element signature="e#7096#7097#0" expanded="true" />
             <element signature="e#7132#7133#0" expanded="true" />
@@ -1265,8 +1255,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
           <folding>
-            <element signature="e#837#838#0" expanded="true" />
-            <element signature="e#864#865#0" expanded="true" />
             <element signature="e#954#955#0" expanded="true" />
             <element signature="e#1008#1009#0" expanded="true" />
           </folding>
@@ -1302,7 +1290,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="94" column="37" selection-start-line="94" selection-start-column="37" selection-end-line="94" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#913#914#0" expanded="true" />
             <element signature="e#951#952#0" expanded="true" />
             <element signature="e#1193#1194#0" expanded="true" />
@@ -1329,6 +1316,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="435" column="22" selection-start-line="435" selection-start-column="22" selection-end-line="435" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1343,27 +1331,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.030269058">
           <caret line="286" column="21" selection-start-line="286" selection-start-column="21" selection-end-line="286" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/MyServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="68" selection-start-line="31" selection-start-column="68" selection-end-line="31" selection-end-column="68" />
-          <folding>
-            <element signature="e#837#838#0" expanded="true" />
-            <element signature="e#864#865#0" expanded="true" />
-            <element signature="e#954#955#0" expanded="true" />
-            <element signature="e#1008#1009#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1375,20 +1343,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/NIOServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
+          <caret line="259" column="5" selection-start-line="259" selection-start-column="5" selection-end-line="259" selection-end-column="5" />
+          <folding>
+            <element signature="e#6909#6910#0" expanded="true" />
+            <element signature="e#7096#7097#0" expanded="true" />
+            <element signature="e#7132#7133#0" expanded="true" />
+            <element signature="e#7295#7296#0" expanded="true" />
+            <element signature="e#7335#7336#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/utils/SocketUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="119" column="42" selection-start-line="119" selection-start-column="42" selection-end-line="119" selection-end-column="42" />
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#913#914#0" expanded="true" />
             <element signature="e#951#952#0" expanded="true" />
             <element signature="e#1193#1194#0" expanded="true" />
@@ -1403,18 +1376,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/revtekk/nioflex/NIOServer.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9339934">
-          <caret line="276" column="47" selection-start-line="276" selection-start-column="47" selection-end-line="276" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/revtekk/nioflex/MyServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="68" selection-start-line="31" selection-start-column="68" selection-end-line="31" selection-end-column="68" />
           <folding>
-            <element signature="e#6877#6878#0" expanded="true" />
-            <element signature="e#6909#6910#0" expanded="true" />
-            <element signature="e#7096#7097#0" expanded="true" />
-            <element signature="e#7132#7133#0" expanded="true" />
-            <element signature="e#7295#7296#0" expanded="true" />
-            <element signature="e#7335#7336#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#1008#1009#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51903117">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -11,7 +11,8 @@ It is highly recommended that if you want to contribute to NioFlex, please make 
 branch of your fork. This will make the merging from submitted Pull Requests (PR) a lot easier. 
 
 From time to time, the [NioFlex Version](#version) will change as edits will be collected into "release candidates"
-These 'rc's will not be pushed to the Maven Central Repository, however, a .jar will be available for download.
+These 'rc's will not be pushed to the Maven Central Repository; however, you can git fetch using the release's last commit
+SHA-1 hash (listed below)
 
 ### Purpose & Functionality
 
@@ -86,10 +87,10 @@ public class EchoServer extends NIOServer
 
 ### Version
 
-| Mainline Version | Release Date  | Download    | 
-| ---------------- | ------------- | ----------- |
-| 0.20-rc1         | [TBD]         | [TBD]       |
-
+| Mainline Version | Release Date  | Git Commit    |
+| ---------------- | ------------- | ------------- |
+| 0.20-rc2         | [TBD]         | [TBD]         |
+| 0.20-rc1         | [8/13/15]     | [373868caa18fb474b4a83c0acc37555bfd558793](https://github.com/maheshkhanwalkar/NioFlex/commit/373868caa18fb474b4a83c0acc37555bfd558793) |
 
 
 | Stable Version   | Release Date  | Download                                                                               | 
