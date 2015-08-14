@@ -87,6 +87,18 @@ public class EchoServer extends NIOServer
 
 ### Version
 
+When checking out the source of previous release-candidates, please use the dev
+branch -- and not the master branch
+
+For example, to check out 0.20-rc1, you could do:
+
+```
+git clone https://github.com/maheshkhanwalkar/NioFlex -b dev
+git fetch origin 20fcc786774e23ca149775ff3845a8080309e7e2
+git reset --hard FETCH_HEAD
+
+```
+
 | Mainline Version | Release Date  | Git Commit    |
 | ---------------- | ------------- | ------------- |
 | 0.20-rc2         | [TBD]         | [TBD]         |
