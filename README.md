@@ -93,10 +93,11 @@ branch -- and not the master branch
 For example, to check out 0.20-rc1, you could do:
 
 ```
-git clone https://github.com/maheshkhanwalkar/NioFlex -b dev
+git clone https://github.com/maheshkhanwalkar/NioFlex -b dev NioFlex-dev
+cd NioFlex-dev
+
 git fetch origin 20fcc786774e23ca149775ff3845a8080309e7e2
 git reset --hard FETCH_HEAD
-
 ```
 
 | Mainline Version | Release Date  | Git Commit    |
