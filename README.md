@@ -69,7 +69,7 @@ public class EchoServer extends NIOServer
          if (len < 65536)
          {
             //this a random "buffer-maximum"
-            //this server will reject reads of larger than 65,536 bytes
+            //this server will reject reads of greater than or equal to 65,536 bytes
 
             String data = util.readString(len);
             System.out.println("Data Received: " + data);
