@@ -96,8 +96,7 @@ For example, to check out 0.20-rc1, you could do:
 git clone https://github.com/maheshkhanwalkar/NioFlex -b dev NioFlex-dev
 cd NioFlex-dev
 
-git fetch origin 20fcc786774e23ca149775ff3845a8080309e7e2
-git reset --hard FETCH_HEAD
+git reset --hard 20fcc786774e23ca149775ff3845a8080309e7e2
 ```
 
 | Mainline Version | Release Date  | Git Commit    |
