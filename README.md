@@ -1,18 +1,14 @@
 # NioFlex
 *Flexible NIO Server Building-Blocks for Java*
 
-### Welcome to the 'dev' branch
+### Welcome to the 'master' branch
 
-The NioFlex 'dev' branch is where all the active development occurs. The latest and greatest
-features of NioFlex are staged and developed here before (eventually) making it to the 'master' branch
-when a release is ready to be deployed. 
-
-It is highly recommended that if you want to contribute to NioFlex, please make all edits on the 'dev'
-branch of your fork. This will make the merging from submitted Pull Requests (PR) a lot easier. 
+The NioFlex 'master' branch is where all the active development occurs - there is no 'dev' branch (anymore), 
+so you will need to look at the versions listed below to find out how to checkout the source and/or zoom back 
+in time to the release you want - or just use the pre-made jars (and/or the Maven Central Repository)
 
 From time to time, the [NioFlex Version](#version) will change as edits will be collected into "release candidates"
-These 'rc's will not be pushed to the Maven Central Repository; however, you can git fetch using the release's last commit
-SHA-1 hash (listed below)
+These 'rc's will not be pushed to the Maven Central Repository; however, you can git fetch using the release's last commit SHA-1 hash (listed below)
 
 ### Purpose & Functionality
 
@@ -93,8 +89,8 @@ branch -- and not the master branch
 For example, to check out 0.20-rc1, you could do:
 
 ```
-git clone https://github.com/maheshkhanwalkar/NioFlex -b dev NioFlex-dev
-cd NioFlex-dev
+git clone https://github.com/maheshkhanwalkar/NioFlex
+cd NioFlex
 
 git reset --hard 20fcc786774e23ca149775ff3845a8080309e7e2
 ```
@@ -111,7 +107,7 @@ git reset --hard 20fcc786774e23ca149775ff3845a8080309e7e2
 
 ### Maven Import
 
-**Note:** This only applies to stable, non-dev releases (see master branch). No release candidate will
+**Note:** This only applies to stable released. No release candidate will
 be pushed to the Maven Central Repository. 
 
 NioFlex has been deployed to the Maven Central Repository. The pom.xml
