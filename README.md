@@ -5,7 +5,7 @@
 
 The NioFlex 'master' branch is where all the active development occurs - there is no 'dev' branch (anymore), 
 so you will need to look at the versions listed below to find out how to checkout the source and/or zoom back 
-in time to the release you want - or just use the pre-made jars (and/or the Maven Central Repository)
+in time to the release you want - or just use the pre-made jars or the Maven dependencies (see below).
 
 From time to time, the [NioFlex Version](#version) will change as edits will be collected into "release candidates"
 These 'rc's will not be pushed to the Maven Central Repository; however, you can git fetch using the release's last commit SHA-1 hash (listed below)
@@ -83,8 +83,8 @@ public class EchoServer extends NIOServer
 
 ### Version
 
-When checking out the source of previous release-candidates, please use the dev
-branch -- and not the master branch
+Release candidates (x.y.z-rcN) are not compiled for you or pushed to the Central Repository, 
+so you will need to checkout the correct commit that is the last commit of that rc release.
 
 For example, to check out 0.20-rc1, you could do:
 
@@ -107,7 +107,7 @@ git reset --hard 20fcc786774e23ca149775ff3845a8080309e7e2
 
 ### Maven Import
 
-**Note:** This only applies to stable released. No release candidate will
+**Note:** This only applies to stable releases. No release candidate will
 be pushed to the Maven Central Repository. 
 
 NioFlex has been deployed to the Maven Central Repository. The pom.xml
