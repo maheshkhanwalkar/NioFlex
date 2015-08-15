@@ -6,19 +6,10 @@
 
     <groupId>com.revtekk</groupId>
     <artifactId>nioflex</artifactId>
-    <version>0.10</version>
+    <version>0.20-rc1</version>
 
     <name>NioFlex</name>
     <description>Flexible NIO Server Building-Blocks for Java</description>
     <url>http://github.com/maheshkhanwalkar/NioFlex</url>
-
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
 </project>

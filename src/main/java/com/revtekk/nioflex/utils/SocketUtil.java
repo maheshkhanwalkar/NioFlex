@@ -21,15 +21,16 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
 
-public class NIOUtils
+public class SocketUtil
 {
     private SocketChannel channel;
     private ByteBuffer refund;
 
-    public NIOUtils(SocketChannel channel)
+    public SocketUtil(SocketChannel channel)
     {
         this.channel = channel;
     }
+
 
     /**
      * Refunds a ByteBuffer that will be used when the next call
@@ -51,6 +52,7 @@ public class NIOUtils
     public ByteBuffer readBuffer(int len)
     {
         ByteBuffer buffer = ByteBuffer.allocate(len);
+
         if(refund != null)
         {
             buffer.put(refund.get());
@@ -63,15 +65,13 @@ public class NIOUtils
         {
             while((read += channel.read(buffer)) < len - 1);
             buffer.flip();
-
-            return buffer;
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
 
-        return null;
+        return buffer;
     }
 
     /**
@@ -82,7 +82,12 @@ public class NIOUtils
      */
     public byte[] readBytes(int len)
     {
-        return readBuffer(len).array();
+        ByteBuffer buf = readBuffer(len);
+
+        if(buf != null)
+            return buf.array();
+
+        return null;
     }
 
     /**
@@ -95,7 +100,10 @@ public class NIOUtils
     public String readString(int len)
     {
         byte[] bytes = readBytes(len);
-        return new String(bytes); //uses default encoding
+        if(bytes != null)
+            return new String(bytes); //uses default encoding
+
+        return null;
     }
 
     /**
@@ -146,6 +154,23 @@ public class NIOUtils
     }
 
     /**
+     * Write ByteBuffer data to a SocketChannel
+     * @param buf data contained in a ByteBuffer
+     */
+    public void writeBuffer(ByteBuffer buf)
+    {
+        try
+        {
+            channel.write(buf);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
      * Write byte[] to a SocketChannel
      * @param bytes bytes to be written
      */
@@ -155,15 +180,7 @@ public class NIOUtils
         buf.put(bytes);
 
         buf.flip();
-
-        try
-        {
-            channel.write(buf);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        writeBuffer(buf);
     }
 
     /**
@@ -199,15 +216,7 @@ public class NIOUtils
         buf.putInt(num);
 
         buf.flip();
-
-        try
-        {
-            channel.write(buf);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        writeBuffer(buf);
     }
 
     /**
@@ -220,15 +229,7 @@ public class NIOUtils
         buf.putShort(num);
 
         buf.flip();
-
-        try
-        {
-            channel.write(buf);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        writeBuffer(buf);
     }
 
     /**
@@ -241,14 +242,6 @@ public class NIOUtils
         buf.putLong(num);
 
         buf.flip();
-
-        try
-        {
-            channel.write(buf);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        writeBuffer(buf);
     }
 }

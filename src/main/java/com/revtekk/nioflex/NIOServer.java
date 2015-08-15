@@ -16,7 +16,8 @@ package com.revtekk.nioflex;
     limitations under the License.
 */
 
-import com.revtekk.nioflex.utils.NIOUtils;
+import com.revtekk.nioflex.policy.ThreadPolicy;
+import com.revtekk.nioflex.utils.SocketUtil;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -64,6 +65,14 @@ public abstract class NIOServer
     protected ThreadPoolExecutor pool = new ThreadPoolExecutor(cores, cores * 2,
             1, TimeUnit.MINUTES, new LinkedBlockingQueue<Runnable>());
 
+
+    /**
+     * The thread-pool utilization policy for the server.
+     * By default, the server uses the thread-pool to run handleRead() only
+     *
+     */
+    protected ThreadPolicy policy = ThreadPolicy.THREAD_FOR_READ;
+
     /**
      * Flag to shutdown the server
      */
@@ -75,11 +84,10 @@ public abstract class NIOServer
         setPort(port);
     }
 
-
     /**
      * Tell the server to shutdown
      */
-    protected void scheduleShutdown()
+    public void scheduleShutdown()
     {
         SHUTDOWN = true;
     }
@@ -95,9 +103,9 @@ public abstract class NIOServer
         private SocketChannel client;
         private SelectionKey key;
 
-        private NIOUtils util;
+        private SocketUtil util;
 
-        public IOProcessor(SocketChannel client, SelectionKey key, NIOUtils util)
+        public IOProcessor(SocketChannel client, SelectionKey key, SocketUtil util)
         {
             this.client = client;
             this.key = key;
@@ -122,7 +130,7 @@ public abstract class NIOServer
      * @param client SocketChannel corresponding to the client
      * @param key current SelectionKey
      */
-    public abstract void handleAccept(SocketChannel client, SelectionKey key);
+    public void handleAccept(SocketChannel client, SelectionKey key) {}
 
     /**
      * This method is invoked once data can be read from the client.
@@ -131,7 +139,7 @@ public abstract class NIOServer
      * @param key current SelectionKey
      * @param util NIOUtils for easy-to-use Socket I/O
      */
-    public abstract void handleRead(SocketChannel client, SelectionKey key, NIOUtils util);
+    public abstract void handleRead(SocketChannel client, SelectionKey key, SocketUtil util);
 
     /**
      * NIO Event Handler (e.g. Accepting Clients & Task Scheduling)
@@ -149,12 +157,12 @@ public abstract class NIOServer
 
                 while(itr.hasNext())
                 {
-                    SelectionKey key = itr.next();
+                    final SelectionKey key = itr.next();
                     itr.remove();
 
                     if(key.isAcceptable())
                     {
-                        SocketChannel client = server.accept();
+                        final SocketChannel client = server.accept();
 
                         if(client == null)
                             continue;
@@ -162,7 +170,21 @@ public abstract class NIOServer
                         client.configureBlocking(false);
 
                         client.register(selector, SelectionKey.OP_READ);
-                        handleAccept(client, key);
+
+                        if(policy == ThreadPolicy.THREAD_FOR_ACCEPT ||  policy == ThreadPolicy.THREAD_FOR_ALL)
+                        {
+                            pool.submit(new Runnable()
+                            {
+                                public void run()
+                                {
+                                    handleAccept(client, key);
+                                }
+                            });
+                        }
+                        else
+                        {
+                            handleAccept(client, key);
+                        }
                     }
 
                     if(key.isReadable())
@@ -181,15 +203,17 @@ public abstract class NIOServer
                             continue;
 
                         oneByte.flip();
+                        SocketUtil util = new SocketUtil(client);
 
-                        NIOUtils util = new NIOUtils(client);
                         util.refund(oneByte);
-
                         key.interestOps(0);
 
                         IOProcessor proc = new IOProcessor(client, key, util);
-                        pool.submit(proc);
 
+                        if(policy == ThreadPolicy.THREAD_FOR_ACCEPT || policy == ThreadPolicy.THREAD_FOR_ALL)
+                            pool.submit(proc);
+                        else
+                            proc.run();
                     }
                 }
 
@@ -238,6 +262,24 @@ public abstract class NIOServer
     }
 
     /**
+     * Runs launch() on a new thread
+     * @return Thread returns the Thread that the server was launched on
+     */
+    public final Thread launchThread()
+    {
+        Thread t = new Thread(new Runnable()
+        {
+            public void run()
+            {
+                launch();
+            }
+        });
+
+        t.start();
+        return t;
+    }
+
+    /**
      * Sets the NIOServer's port
      * @param port port to bind to
      */
@@ -262,5 +304,14 @@ public abstract class NIOServer
     private void setSelector(Selector selector)
     {
         this.selector = selector;
+    }
+
+    /**
+     * Sets the thread-pool utilization policy for the server.
+     * @param policy - ThreadPolicy enum
+     */
+    public void setPolicy(ThreadPolicy policy)
+    {
+        this.policy = policy;
     }
 }

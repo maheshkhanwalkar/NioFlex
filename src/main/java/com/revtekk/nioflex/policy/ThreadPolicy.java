@@ -1,3 +1,5 @@
+package com.revtekk.nioflex.policy;
+
 /*
     Copyright 2015 Mahesh Khanwalkar
 
@@ -13,35 +15,19 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import org.junit.Test;
 
-public class DeployTest
+public enum ThreadPolicy
 {
-    @Test
-    public void serverTest()
-    {
-        Thread thread = new Thread(new Runnable()
-        {
-            public void run()
-            {
-                ServerTest server = new ServerTest(7337);
-                server.launch();
-            }
-        });
+    /* The thread-pool will not be used to run handleAccept() and handleRead() */
+    NO_THREAD_SPAWN,
 
-        thread.start();
+    /* Only use the thread-pool to run handleAccept() not handleRead() */
+    THREAD_FOR_ACCEPT,
 
+    /* Only use the thread-pool to run handleRead() not handleAccept() */
+    /* This is the default policy */
+    THREAD_FOR_READ,
 
-        ClientTest client = new ClientTest();
-        client.testClient();
-
-        try
-        {
-            thread.join();
-        }
-        catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-    }
+    /* Use the thread-pool to run handleRead() and handleAccept() */
+    THREAD_FOR_ALL
 }
