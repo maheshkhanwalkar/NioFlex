@@ -3,9 +3,8 @@
 
 ### Welcome to the 'master' branch
 
-The NioFlex 'master' branch is where all the active development occurs - there is no 'dev' branch (anymore), 
-so you will need to look at the versions listed below to find out how to checkout the source and/or zoom back 
-in time to the release you want - or just use the pre-made jars or the Maven dependencies (see below).
+The NioFlex 'master' branch is where all the active development occurs - there is no 'dev' branch (anymore). 
+All older stable release downloads are listed below under the versions sub-section. 
 
 From time to time, the [NioFlex Version](#version) will change as edits will be collected into "release candidates"
 These 'rc's will not be pushed to the Maven Central Repository; however, you can git fetch using the release's last commit SHA-1 hash (listed below)
