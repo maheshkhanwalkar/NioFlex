@@ -9,6 +9,16 @@ require a lot more work than traditional blocking I/O servers.
 NioFlex makes it so that you don't have to write low-level, boilerplate Java NIO code,
 rather you can focus on the server functionality
 
+### Master vs. Dev Branch
+
+This is the master branch, and there are very few edits that occur here directly - 
+all of the development occurs on the 'dev' branch, so, if you are looking for the latest
+and greatest in NioFlex features - check out the [dev branch](https://github.com/maheshkhanwalkar/NioFlex/tree/dev)
+
+For those who want a stable current build, can either get the JAR from the Maven Central
+Repository and checkout the repository and use Maven to carry out the build process. 
+
+
 ### Simple Echo Server
 
 ```
