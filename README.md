@@ -72,33 +72,3 @@ public class EchoServer extends NIOServer
 }
 ```
 
-### Version
-
-Release candidates (x.y.z-rcN) are not compiled for you or pushed to the Central Repository, 
-so you will need to checkout the correct commit that is the last commit of that rc release.
-
-| Mainline Version | Release Date  | Git Commit    |
-| ---------------- | ------------- | ------------- |
-| 0.30-rc1         | [TBD]         | [TBD]         |
-
-
-| Stable Version   | Release Date  | Download                                                                               | 
-| ---------------- | ------------- | -------------------------------------------------------------------------------------- |
-| 0.20             | [12/11/19]    | [TBD]                                                                                  |
-| 0.10             | [7/23/15]     | [[0.10 JAR](http://central.maven.org/maven2/com/revtekk/nioflex/0.10/nioflex-0.10.jar)]|
-
-### Maven Import
-
-**Note:** This only applies to stable releases. No release candidate will
-be pushed to the Maven Central Repository. 
-
-NioFlex has been deployed to the Maven Central Repository. The pom.xml
-dependency is:
-
-```
-<dependency>
-  <groupId>com.revtekk</groupId>
-  <artifactId>nioflex</artifactId>
-  <version>0.10</version>
-</dependency>
-```
