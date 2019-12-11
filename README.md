@@ -1,14 +1,6 @@
 # NioFlex
 *Flexible NIO Server Building-Blocks for Java*
 
-### Welcome to the 'master' branch
-
-The NioFlex 'master' branch is where all the active development occurs - there is no 'dev' branch (anymore). 
-All older stable release downloads are listed below under the versions sub-section. 
-
-From time to time, the [NioFlex Version](#version) will change as edits will be collected into "release candidates"
-These 'rc's will not be pushed to the Maven Central Repository; however, you can git fetch using the release's last commit SHA-1 hash (listed below)
-
 ### Purpose & Functionality
 
 NioFlex allows developers to quickly create Java NIO-driven servers, which typically
@@ -80,42 +72,3 @@ public class EchoServer extends NIOServer
 }
 ```
 
-### Version
-
-Release candidates (x.y.z-rcN) are not compiled for you or pushed to the Central Repository, 
-so you will need to checkout the correct commit that is the last commit of that rc release.
-
-For example, to check out 0.20-rc1, you could do:
-
-```
-git clone https://github.com/maheshkhanwalkar/NioFlex
-cd NioFlex
-
-git reset --hard 20fcc786774e23ca149775ff3845a8080309e7e2
-```
-
-| Mainline Version | Release Date  | Git Commit    |
-| ---------------- | ------------- | ------------- |
-| 0.20-rc2         | [TBD]         | [TBD]         |
-| 0.20-rc1         | [8/13/15]     | [20fcc786774e23ca149775ff3845a8080309e7e2](https://github.com/maheshkhanwalkar/NioFlex/commit/20fcc786774e23ca149775ff3845a8080309e7e2)         |
-
-
-| Stable Version   | Release Date  | Download                                                                               | 
-| ---------------- | ------------- | -------------------------------------------------------------------------------------- |
-| 0.10             | [7/23/15]     | [[0.10 JAR](http://central.maven.org/maven2/com/revtekk/nioflex/0.10/nioflex-0.10.jar)]     |
-
-### Maven Import
-
-**Note:** This only applies to stable releases. No release candidate will
-be pushed to the Maven Central Repository. 
-
-NioFlex has been deployed to the Maven Central Repository. The pom.xml
-dependency is:
-
-```
-<dependency>
-  <groupId>com.revtekk</groupId>
-  <artifactId>nioflex</artifactId>
-  <version>0.10</version>
-</dependency>
-```
