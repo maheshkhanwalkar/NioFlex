@@ -1,6 +1,6 @@
 package com.revtekk.nioflex.main;
 
-public class Client
+public abstract class Client
 {
 
 }
