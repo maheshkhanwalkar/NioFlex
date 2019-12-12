@@ -1,6 +1,7 @@
 package com.revtekk.nioflex.main;
 
 import com.revtekk.nioflex.config.SecurityType;
+import com.revtekk.nioflex.config.ServerHooks;
 import com.revtekk.nioflex.config.ServerOption;
 import com.revtekk.nioflex.config.SocketType;
 
@@ -12,7 +13,7 @@ public class Server
 
     public static Server build(InetAddress address, int port,
                                SocketType socket, SecurityType security,
-                               ServerOption... options)
+                               ServerHooks hooks, ServerOption... options)
     {
         return null;
     }
