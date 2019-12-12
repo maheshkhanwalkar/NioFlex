@@ -1,4 +1,4 @@
-package com.revtekk.nioflex;
+package com.revtekk.nioflex.old;
 
 import com.revtekk.nioflex.old.policy.ThreadPolicy;
 import com.revtekk.nioflex.old.utils.SocketUtil;
