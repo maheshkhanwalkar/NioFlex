@@ -11,5 +11,4 @@ which will be coming soon.
 
 | FS       | Description     | Branch   | Release   | Completed |
 | :------: | :-------------: | :------: | :-------: | :-------: |
-| [FS-01](https://gist.github.com/maheshkhanwalkar/9640e753dbfb1281bba92088e2ed88c4) | API redesign    | [api-changes](https://github.com/maheshkhanwalkar/NioFlex/tree/api-changes) | v1.0 | No |
-
+| [FS-0](https://gist.github.com/maheshkhanwalkar/9640e753dbfb1281bba92088e2ed88c4) | API redesign    | [api-changes](https://github.com/maheshkhanwalkar/NioFlex/tree/api-changes) | v1.0 | No |
