@@ -1,5 +1,6 @@
 package com.revtekk.nioflex.impl;
 
+import com.revtekk.nioflex.config.OptionType;
 import com.revtekk.nioflex.config.ServerHooks;
 import com.revtekk.nioflex.config.ServerOption;
 import com.revtekk.nioflex.main.Client;
@@ -26,8 +27,17 @@ class UDPServer extends Server
     @Override
     public void start() throws SocketException
     {
+        int timeout = -1;
+
+        // check for timeout option
+        for (ServerOption option : options)
+        {
+            if (option.type == OptionType.RECEIVE_TIMEOUT)
+                timeout = Integer.parseInt(option.value);
+        }
+
         socket = new DatagramSocket(port, address);
-        layer = new DatagramLayer(socket);
+        layer = (timeout == -1) ? new DatagramLayer(socket) : new DatagramLayer(socket, timeout);
 
         worker = new Thread(() ->
         {

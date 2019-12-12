@@ -10,14 +10,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class DatagramLayer implements CommLayer
 {
     private DatagramSocket socket;
-
-    // FIXME: make this configurable (via options)
-    private static final int TIMEOUT = 10000;
+    private static final int DEFAULT_TIMEOUT = 1000;
 
     public DatagramLayer(DatagramSocket socket) throws SocketException
     {
+        this(socket, DEFAULT_TIMEOUT);
+    }
+
+    public DatagramLayer(DatagramSocket socket, int timeout) throws SocketException
+    {
         this.socket = socket;
-        this.socket.setSoTimeout(TIMEOUT);
+        this.socket.setSoTimeout(timeout);
     }
 
     @Override
