@@ -4,6 +4,7 @@ import com.revtekk.nioflex.config.ServerHooks;
 import com.revtekk.nioflex.config.ServerOption;
 
 import java.net.InetAddress;
+import java.net.SocketException;
 
 /**
  * Server
@@ -37,7 +38,7 @@ public abstract class Server
      * The underlying server socket will be initialised and will be ready to
      * start processing clients and data.
      */
-    public abstract void start();
+    public abstract void start() throws SocketException;
 
     /**
      * Shutdown the server
@@ -45,5 +46,5 @@ public abstract class Server
      * Close down the underlying server socket, cleaning up any associated
      * resources and stopping all communication.
      */
-    public abstract void shutdown();
+    public abstract void shutdown() throws InterruptedException;
 }
