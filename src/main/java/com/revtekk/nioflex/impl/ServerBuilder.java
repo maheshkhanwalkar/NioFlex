@@ -35,7 +35,19 @@ public class ServerBuilder
                                SocketType socket, SecurityType security,
                                ServerHooks hooks, ServerOption... options)
     {
-        // TODO: add an actual implementation here
-        return null;
+        // invalid combination of options
+        if(socket == SocketType.SOCKET_UDP && security == SecurityType.SECURITY_TLS)
+            return null;
+
+        // construct the correct underlying server
+        switch (socket)
+        {
+            case SOCKET_TCP:
+                return new TCPServer(address, port, hooks, security, options);
+            case SOCKET_UDP:
+                return new UDPServer(address, port, hooks, options);
+            default:
+                return null;
+        }
     }
 }
