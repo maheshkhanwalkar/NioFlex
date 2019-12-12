@@ -1,4 +1,4 @@
-package com.revtekk.nioflex.policy;
+package com.revtekk.nioflex.old.policy;
 
 public enum ThreadPolicy
 {

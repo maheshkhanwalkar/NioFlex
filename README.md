@@ -23,8 +23,8 @@ TODO
 ### Simple Echo Server
 
 ```java
-import com.revtekk.nioflex.NIOServer;
-import com.revtekk.nioflex.utils.SocketUtil;
+import com.revtekk.nioflex.old.NIOServer;
+import com.revtekk.nioflex.old.utils.SocketUtil;
 
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;

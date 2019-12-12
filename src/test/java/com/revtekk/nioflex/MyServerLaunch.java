@@ -1,7 +1,7 @@
 package com.revtekk.nioflex;
 
-import com.revtekk.nioflex.policy.ThreadPolicy;
-import com.revtekk.nioflex.utils.SocketUtil;
+import com.revtekk.nioflex.old.policy.ThreadPolicy;
+import com.revtekk.nioflex.old.utils.SocketUtil;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
