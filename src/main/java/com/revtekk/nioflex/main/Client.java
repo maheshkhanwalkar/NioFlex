@@ -3,7 +3,9 @@ package com.revtekk.nioflex.main;
 import com.revtekk.nioflex.impl.CommLayer;
 import com.revtekk.nioflex.util.Packet;
 
-public abstract class Client
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public class Client
 {
     /**
      * Underlying communication layer
@@ -11,13 +13,23 @@ public abstract class Client
      * This will be used by the client implementations to actually read and
      * write from the underlying socket.
      */
-    protected CommLayer layer;
+    private CommLayer layer;
+
+    /**
+     * Quit signal
+     *
+     * When shutting down the client, it may be blocked on a read or write
+     * operation, so this signal causes it to unblock and return with failure.
+     *
+     * Then, the client can be shutdown successfully and resources released
+     */
+    private AtomicBoolean quit = new AtomicBoolean();
 
     /**
      * Initialise the client with a communication layer
      * @param layer - layer to use
      */
-    protected Client(CommLayer layer)
+    public Client(CommLayer layer)
     {
         this.layer = layer;
     }
@@ -44,7 +56,7 @@ public abstract class Client
     public Packet readPacket(int size)
     {
         byte[] buffer = new byte[size];
-        int res = layer.forceRead(buffer, 0, size);
+        int res = layer.forceRead(buffer, 0, size, quit);
 
         // something went wrong
         if(res == -1)
@@ -77,7 +89,7 @@ public abstract class Client
      */
     public boolean writePacket(Packet pkt)
     {
-        return layer.forceWrite(pkt.data, 0, pkt.data.length) != -1;
+        return layer.forceWrite(pkt.data, 0, pkt.data.length, quit) != -1;
     }
 
     /**
@@ -85,6 +97,7 @@ public abstract class Client
      */
     public void close()
     {
+        quit.set(true);
         layer.close();
     }
 }

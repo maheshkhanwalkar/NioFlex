@@ -1,5 +1,7 @@
 package com.revtekk.nioflex.impl;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public interface CommLayer
 {
     /**
@@ -20,9 +22,10 @@ public interface CommLayer
      * @param buffer - buffer to store data in
      * @param offset - where to start from in the buffer
      * @param len - number of bytes to read
+     * @param quit - give up on the read, if set to true
      * @return 'len' on success, -1 on failure
      */
-    int forceRead(byte[] buffer, int offset, int len);
+    int forceRead(byte[] buffer, int offset, int len, AtomicBoolean quit);
 
     /**
      * Attempt to write a certain number of bytes sourced from a
@@ -42,9 +45,10 @@ public interface CommLayer
      * @param buffer - buffer to read data from
      * @param offset - where to start from in the buffer
      * @param len - number of bytes to write
+     * @param quit - give up on the write, if set to true
      * @return 'len' on success, -1 on error
      */
-    int forceWrite(byte[] buffer, int offset, int len);
+    int forceWrite(byte[] buffer, int offset, int len, AtomicBoolean quit);
 
     /**
      * Close the communication layer
