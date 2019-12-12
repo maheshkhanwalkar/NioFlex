@@ -9,7 +9,7 @@ public class MyServer extends NIOServer
 {
     public MyServer(int port)
     {
-        super(port);
+        super("localhost", port);
     }
 
     @Override

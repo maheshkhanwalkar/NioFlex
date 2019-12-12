@@ -24,6 +24,11 @@ import java.util.concurrent.TimeUnit;
 public abstract class NIOServer
 {
     /**
+     * IP address (or host) that the server is bound to
+     */
+    protected String ip;
+
+    /**
      * Port that the server is bound to
      */
     protected int port;
@@ -66,6 +71,13 @@ public abstract class NIOServer
     public NIOServer(int port)
     {
         setPort(port);
+        setIP("localhost");
+    }
+
+    public NIOServer(String ip, int port)
+    {
+        setPort(port);
+        setIP(ip);
     }
 
     /**
@@ -221,7 +233,7 @@ public abstract class NIOServer
     {
         try
         {
-            ServerSocketChannel server = ServerSocketChannel.open().bind(new InetSocketAddress("localhost", port));
+            ServerSocketChannel server = ServerSocketChannel.open().bind(new InetSocketAddress(ip, port));
             Selector selector = Selector.open();
 
             server.configureBlocking(false);
@@ -258,6 +270,15 @@ public abstract class NIOServer
     private void setPort(int port)
     {
         this.port = port;
+    }
+
+    /**
+     * Sets the NIOServer's IP address
+     * @param ip IP address to bind to
+     */
+    public void setIP(String ip)
+    {
+        this.ip = ip;
     }
 
     /**
