@@ -5,5 +5,5 @@ package com.revtekk.nioflex.config;
  */
 public enum OptionType
 {
-
+    POOL_CORE_COUNT
 }
