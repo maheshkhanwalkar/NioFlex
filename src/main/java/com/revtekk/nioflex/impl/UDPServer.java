@@ -6,6 +6,7 @@ import com.revtekk.nioflex.config.ServerOption;
 import com.revtekk.nioflex.main.Client;
 import com.revtekk.nioflex.main.Server;
 
+import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
@@ -17,7 +18,7 @@ class UDPServer extends Server
     private CommLayer layer;
 
     private Thread worker;
-    private AtomicBoolean flag = new AtomicBoolean();
+    private AtomicBoolean quit = new AtomicBoolean();
 
     private Client client;
 
@@ -40,11 +41,11 @@ class UDPServer extends Server
 
         socket = new DatagramSocket(port, address);
         layer = (timeout == -1) ? new DatagramLayer(socket) : new DatagramLayer(socket, timeout);
-        client = new Client(layer, flag);
+        client = new Client(layer, quit);
 
         worker = new Thread(() ->
         {
-            while(!flag.get())
+            while(!quit.get())
                 hooks.onRead(client);
         });
 
@@ -52,9 +53,9 @@ class UDPServer extends Server
     }
 
     @Override
-    public void shutdown() throws InterruptedException
+    public void shutdown() throws InterruptedException, IOException
     {
-        flag.set(true);
+        quit.set(true);
         worker.join();
         socket.close();
         client.close();

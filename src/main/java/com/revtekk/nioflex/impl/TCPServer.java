@@ -93,7 +93,7 @@ class TCPServer extends Server
                         client.configureBlocking(false);
                         client.register(selector, SelectionKey.OP_READ);
 
-                        Client wrapper = new Client(new StreamLayer(client));
+                        Client wrapper = new Client(new StreamLayer(client), quit);
                         map.put(client, wrapper);
 
                         // FIXME: should this be on the event loop thread?
