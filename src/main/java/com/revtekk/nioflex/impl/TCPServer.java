@@ -3,6 +3,7 @@ package com.revtekk.nioflex.impl;
 import com.revtekk.nioflex.config.SecurityType;
 import com.revtekk.nioflex.config.ServerHooks;
 import com.revtekk.nioflex.config.ServerOption;
+import com.revtekk.nioflex.main.Client;
 import com.revtekk.nioflex.main.Server;
 
 import java.io.IOException;
@@ -12,7 +13,9 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -31,6 +34,7 @@ class TCPServer extends Server
     private AtomicBoolean quit;
     private ExecutorService pool;
     private Thread main;
+    private Map<SocketChannel, Client> map;
 
     public TCPServer(InetAddress address, int port, ServerHooks hooks,
             SecurityType security, ServerOption... options)
@@ -40,6 +44,7 @@ class TCPServer extends Server
         this.security = security;
         this.options = options;
         this.quit = new AtomicBoolean();
+        this.map = new HashMap<>();
     }
 
     @Override
@@ -83,18 +88,32 @@ class TCPServer extends Server
 
                     if(key.isAcceptable())
                     {
-                        // TODO: add onAccept() hook
                         SocketChannel client = server.accept();
 
                         client.configureBlocking(false);
                         client.register(selector, SelectionKey.OP_READ);
+
+                        Client wrapper = new Client(new StreamLayer(client));
+                        map.put(client, wrapper);
+
+                        // FIXME: should this be on the event loop thread?
+                        // TODO: maybe make this configurable (like it was previously)
+                        hooks.onAccept(wrapper);
                     }
 
                     if(key.isReadable())
                     {
                         // TODO: add onRead() hook
                         SocketChannel client = (SocketChannel)key.channel();
+                        Client wrapper = map.get(client);
+
                         key.interestOps(0);
+
+                        // process the request with the executor service
+                        pool.submit(() -> {
+                            hooks.onRead(wrapper);
+                            key.interestOps(SelectionKey.OP_READ);
+                        });
                     }
                 }
             }
