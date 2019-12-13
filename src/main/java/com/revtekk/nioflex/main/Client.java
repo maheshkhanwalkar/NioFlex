@@ -3,6 +3,7 @@ package com.revtekk.nioflex.main;
 import com.revtekk.nioflex.impl.CommLayer;
 import com.revtekk.nioflex.util.Packet;
 
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Client
@@ -95,7 +96,7 @@ public class Client
     /**
      * Close the underlying client
      */
-    public void close()
+    public void close() throws IOException
     {
         quit.set(true);
         layer.close();

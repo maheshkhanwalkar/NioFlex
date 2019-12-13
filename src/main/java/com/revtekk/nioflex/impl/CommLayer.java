@@ -1,5 +1,6 @@
 package com.revtekk.nioflex.impl;
 
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public interface CommLayer
@@ -53,5 +54,5 @@ public interface CommLayer
     /**
      * Close the communication layer
      */
-    void close();
+    void close() throws IOException;
 }
