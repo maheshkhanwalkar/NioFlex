@@ -23,15 +23,16 @@ public class Client
      *
      * Then, the client can be shutdown successfully and resources released
      */
-    private AtomicBoolean quit = new AtomicBoolean();
+    private AtomicBoolean quit;
 
     /**
      * Initialise the client with a communication layer
      * @param layer - layer to use
      */
-    public Client(CommLayer layer)
+    public Client(CommLayer layer, AtomicBoolean quit)
     {
         this.layer = layer;
+        this.quit = quit;
     }
 
     /**

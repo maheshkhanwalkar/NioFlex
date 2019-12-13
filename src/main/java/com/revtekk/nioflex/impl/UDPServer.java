@@ -19,6 +19,8 @@ class UDPServer extends Server
     private Thread worker;
     private AtomicBoolean flag = new AtomicBoolean();
 
+    private Client client;
+
     public UDPServer(InetAddress address, int port, ServerHooks hooks, ServerOption... options)
     {
         super(address, port, hooks, options);
@@ -38,14 +40,12 @@ class UDPServer extends Server
 
         socket = new DatagramSocket(port, address);
         layer = (timeout == -1) ? new DatagramLayer(socket) : new DatagramLayer(socket, timeout);
+        client = new Client(layer, flag);
 
         worker = new Thread(() ->
         {
             while(!flag.get())
-            {
-                Client client = new Client(layer);
                 hooks.onRead(client);
-            }
         });
 
         worker.start();
@@ -56,7 +56,7 @@ class UDPServer extends Server
     {
         flag.set(true);
         worker.join();
-
         socket.close();
+        client.close();
     }
 }

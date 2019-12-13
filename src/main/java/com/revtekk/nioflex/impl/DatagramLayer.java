@@ -48,32 +48,37 @@ public class DatagramLayer implements CommLayer
     @Override
     public int forceRead(byte[] buffer, int offset, int len, AtomicBoolean quit)
     {
-        try
+        DatagramPacket pkt = new DatagramPacket(buffer, offset, len);
+        int amt = 0;
+
+        while(!quit.get())
         {
-            DatagramPacket pkt = new DatagramPacket(buffer, offset, len);
-            socket.receive(pkt);
-
-            int amt = pkt.getLength();
-
-            while(amt < len) {
-                pkt = new DatagramPacket(buffer, offset + amt, len - amt);
+            try
+            {
                 socket.receive(pkt);
-
                 amt += pkt.getLength();
-            }
 
-            return amt;
+                while(amt < len) {
+                    pkt = new DatagramPacket(buffer, offset + amt, len - amt);
+                    socket.receive(pkt);
+
+                    amt += pkt.getLength();
+                }
+
+                return amt;
+            }
+            catch (SocketTimeoutException e)
+            {
+                // Try again to see if it will work
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+                return -1;
+            }
         }
-        catch (SocketTimeoutException e)
-        {
-            // FIXME: we should continue retrying until 'quit' is asserted
-            return -1;
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            return -1;
-        }
+
+        return -1;
     }
 
     @Override
