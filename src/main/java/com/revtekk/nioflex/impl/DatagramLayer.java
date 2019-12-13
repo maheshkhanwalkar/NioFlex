@@ -25,7 +25,7 @@ public class DatagramLayer implements CommLayer
     }
 
     @Override
-    public int tryRead(byte[] buffer, int offset, int len)
+    public int tryRead(byte[] buffer, int offset, int len) throws IOException
     {
         try
         {
@@ -38,16 +38,10 @@ public class DatagramLayer implements CommLayer
         {
             return 0;
         }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            return -1;
-        }
     }
 
-
     @Override
-    public int forceRead(byte[] buffer, int offset, int len, AtomicBoolean quit)
+    public int forceRead(byte[] buffer, int offset, int len, AtomicBoolean quit) throws IOException
     {
         DatagramPacket pkt = new DatagramPacket(buffer, offset, len);
         int amt = 0;
@@ -72,41 +66,27 @@ public class DatagramLayer implements CommLayer
             {
                 // Try again to see if it will work
             }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-                return -1;
-            }
         }
 
-        return -1;
+        return 0;
     }
 
     @Override
-    public int tryWrite(byte[] buffer, int offset, int len)
+    public int tryWrite(byte[] buffer, int offset, int len) throws IOException
     {
         DatagramPacket pkt = new DatagramPacket(buffer, offset, len);
-
-        try
-        {
-            socket.send(pkt);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            return -1;
-        }
+        socket.send(pkt);
 
         return len;
     }
 
     @Override
-    public int forceWrite(byte[] buffer, int offset, int len, AtomicBoolean quit)
+    public void forceWrite(byte[] buffer, int offset, int len, AtomicBoolean quit) throws IOException
     {
         // there is no difference for UDP, since we can't really force writes to complete,
         // so it is assumed that the packet was sent fully
 
-        return tryWrite(buffer, offset, len);
+        tryWrite(buffer, offset, len);
     }
 
     @Override
