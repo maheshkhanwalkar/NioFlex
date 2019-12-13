@@ -30,14 +30,9 @@ class UDPServer extends Server
     @Override
     public void start() throws SocketException
     {
-        int timeout = -1;
-
         // check for timeout option
-        for (ServerOption option : options)
-        {
-            if (option.type == OptionType.RECEIVE_TIMEOUT)
-                timeout = Integer.parseInt(option.value);
-        }
+        String timeOpt = getOption(OptionType.RECEIVE_TIMEOUT);
+        int timeout = timeOpt != null ? Integer.parseInt(timeOpt) : -1;
 
         socket = new DatagramSocket(port, address);
         layer = (timeout == -1) ? new DatagramLayer(socket) : new DatagramLayer(socket, timeout);

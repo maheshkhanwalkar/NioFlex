@@ -15,12 +15,12 @@ public interface ServerHooks
      * Action to perform when a new client is accepted by the server
      * @param client - newly accepted client
      */
-    void onAccept(Client client);
+    boolean onAccept(Client client);
 
 
     /**
      * Action to perform when a client has data that can be read
      * @param client - readable (ready-to-read) client
      */
-    void onRead(Client client);
+    boolean onRead(Client client);
 }
