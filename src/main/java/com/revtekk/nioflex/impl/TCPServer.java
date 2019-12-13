@@ -97,13 +97,12 @@ class TCPServer extends Server
                         map.put(client, wrapper);
 
                         // FIXME: should this be on the event loop thread?
-                        // TODO: maybe make this configurable (like it was previously)
+                        // TODO: maybe make this configurable (via options)
                         hooks.onAccept(wrapper);
                     }
 
                     if(key.isReadable())
                     {
-                        // TODO: add onRead() hook
                         SocketChannel client = (SocketChannel)key.channel();
                         Client wrapper = map.get(client);
 
@@ -128,6 +127,8 @@ class TCPServer extends Server
     public void shutdown() throws InterruptedException, IOException
     {
         quit.set(true);
+        selector.wakeup();
+
         main.join();
 
         pool.shutdown();
