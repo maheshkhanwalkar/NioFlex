@@ -5,6 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class DatagramLayer implements CommLayer
@@ -112,5 +113,20 @@ public class DatagramLayer implements CommLayer
     public void close()
     {
         socket.close();
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DatagramLayer that = (DatagramLayer) o;
+        return socket.equals(that.socket);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(socket);
     }
 }

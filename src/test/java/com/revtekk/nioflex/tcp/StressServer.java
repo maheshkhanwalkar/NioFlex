@@ -22,18 +22,20 @@ public class StressServer
             private AtomicInteger count = new AtomicInteger(0);
 
             @Override
-            public void onAccept(Client client)
+            public boolean onAccept(Client client)
             {
                 System.out.println("Accepted new client");
+                return true;
             }
 
             @Override
-            public void onRead(Client client)
+            public boolean onRead(Client client)
             {
                 byte[] buffer = new byte[BUFFER_SIZE];
                 int res = client.readBytes(buffer, 0, buffer.length);
 
                 System.out.println(res);
+                return res != -1;
             }
         };
 

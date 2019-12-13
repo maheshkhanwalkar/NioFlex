@@ -1,5 +1,6 @@
 package com.revtekk.nioflex.impl;
 
+import com.revtekk.nioflex.config.OptionType;
 import com.revtekk.nioflex.config.SecurityType;
 import com.revtekk.nioflex.config.ServerHooks;
 import com.revtekk.nioflex.config.ServerOption;
@@ -42,7 +43,6 @@ class TCPServer extends Server
         super(address, port, hooks, options);
 
         this.security = security;
-        this.options = options;
         this.quit = new AtomicBoolean();
         this.map = new HashMap<>();
     }
@@ -62,8 +62,12 @@ class TCPServer extends Server
         server.register(selector, SelectionKey.OP_ACCEPT);
 
         // Initialise the executor service
-        // TODO: allow for core count customisation
-        int count = Runtime.getRuntime().availableProcessors();
+        String countOpt = getOption(OptionType.POOL_CORE_COUNT);
+
+        int count = countOpt == null ?
+                Runtime.getRuntime().availableProcessors() :
+                Integer.parseInt(countOpt);
+
         pool = new ThreadPoolExecutor(count, count, 1, TimeUnit.MINUTES, new LinkedBlockingQueue<>());
 
         main = new Thread(this::eventLoop);
@@ -104,14 +108,40 @@ class TCPServer extends Server
                     if(key.isReadable())
                     {
                         SocketChannel client = (SocketChannel)key.channel();
-                        Client wrapper = map.get(client);
 
+                        if(!client.isOpen())
+                        {
+                            key.cancel();
+                            continue;
+                        }
+
+                        Client wrapper = map.get(client);
                         key.interestOps(0);
 
                         // process the request with the executor service
                         pool.submit(() -> {
-                            hooks.onRead(wrapper);
-                            key.interestOps(SelectionKey.OP_READ);
+                           boolean res = hooks.onRead(wrapper);
+
+                           // something went wrong on read -- deregister the client
+                           // from the event loop selector
+                           if(!res)
+                           {
+                               try
+                               {
+                                   key.cancel();
+                                   selector.wakeup();
+                                   client.close();
+                               }
+                               catch (IOException e)
+                               {
+                                   e.printStackTrace();
+                               }
+
+                               return;
+                           }
+
+                            key.interestOps(key.interestOps() | SelectionKey.OP_READ);
+                            selector.wakeup();
                         });
                     }
                 }

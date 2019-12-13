@@ -3,6 +3,7 @@ package com.revtekk.nioflex.impl;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class StreamLayer implements CommLayer
@@ -105,5 +106,20 @@ public class StreamLayer implements CommLayer
     public void close() throws IOException
     {
         channel.close();
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StreamLayer that = (StreamLayer) o;
+        return channel.equals(that.channel);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(channel);
     }
 }

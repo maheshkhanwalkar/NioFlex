@@ -1,10 +1,13 @@
 package com.revtekk.nioflex.main;
 
+import com.revtekk.nioflex.config.OptionType;
 import com.revtekk.nioflex.config.ServerHooks;
 import com.revtekk.nioflex.config.ServerOption;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Server
@@ -22,14 +25,17 @@ public abstract class Server
     protected InetAddress address;
     protected int port;
     protected ServerHooks hooks;
-    protected ServerOption[] options;
+    private Map<OptionType, String> map;
 
     protected Server(InetAddress address, int port, ServerHooks hooks, ServerOption... options)
     {
         this.address = address;
         this.port = port;
         this.hooks = hooks;
-        this.options = options;
+        this.map = new HashMap<>();
+
+        for(ServerOption opt : options)
+            map.put(opt.type, opt.value);
     }
 
     /**
@@ -47,4 +53,14 @@ public abstract class Server
      * resources and stopping all communication.
      */
     public abstract void shutdown() throws InterruptedException, IOException;
+
+    /**
+     * Retrieve a server option, based on its type
+     * @param type - requested type
+     * @return associated option value
+     */
+    protected String getOption(OptionType type)
+    {
+        return map.get(type);
+    }
 }

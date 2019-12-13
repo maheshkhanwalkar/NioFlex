@@ -20,19 +20,25 @@ public class ForceReadTest
         ServerHooks hooks = new ServerHooks()
         {
             @Override
-            public void onAccept(Client client)
+            public boolean onAccept(Client client)
             {
                 // Not used in UDP -- since there is no real concept of accepting clients
                 // or really clients in general
+                return true;
             }
 
             @Override
-            public void onRead(Client client)
+            public boolean onRead(Client client)
             {
                 Packet pkt = client.readPacket(PKT_SIZE);
 
                 if(pkt == null)
+                {
                     System.err.println("Something failed (or quit was asserted)");
+                    return false;
+                }
+
+                return true;
             }
         };
 
