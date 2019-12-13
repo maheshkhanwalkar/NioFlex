@@ -45,9 +45,10 @@ public class Client
      * @param buffer - buffer to store data in
      * @param offset - where to start from in the buffer
      * @param len - number of bytes to read
-     * @return number of bytes actually read, -1 on error
+     * @return number of bytes actually read
+     * @throws IOException on communication error
      */
-    public int readBytes(byte[] buffer, int offset, int len)
+    public int readBytes(byte[] buffer, int offset, int len) throws IOException
     {
         return layer.tryRead(buffer, offset, len);
     }
@@ -55,16 +56,13 @@ public class Client
     /**
      * Attempt to read a packet of a specified size
      * @param size - size of the packet
-     * @return the packet, or null on error
+     * @return the packet
+     * @throws IOException on communication error
      */
-    public Packet readPacket(int size)
+    public Packet readPacket(int size) throws IOException
     {
         byte[] buffer = new byte[size];
         int res = layer.forceRead(buffer, 0, size, quit);
-
-        // something went wrong
-        if(res == -1)
-            return null;
 
         Packet pkt = new Packet();
         pkt.data = buffer;
@@ -75,16 +73,12 @@ public class Client
     /**
      * Read an integer from the communication layer
      * @return the integer
+     * @throws IOException on communication error
      */
-    public int readInt()
+    public int readInt() throws IOException
     {
         byte[] buffer = new byte[4];
         int res = layer.forceRead(buffer, 0, buffer.length, quit);
-
-        // something went wrong
-        // FIXME! This is potentially undetectable -- needs to throw exceptions
-        if(res == -1)
-            return -1;
 
         return ByteBuffer.wrap(buffer).getInt();
     }
@@ -93,8 +87,9 @@ public class Client
      * Read a string from the communication layer
      * @param charset - encoding charset
      * @return the string, null on error
+     * @throws IOException on communication error
      */
-    public String readString(Charset charset)
+    public String readString(Charset charset) throws IOException
     {
         int size = readInt();
 
@@ -106,10 +101,6 @@ public class Client
         byte[] buffer = new byte[size];
         int res = layer.forceRead(buffer, 0, buffer.length, quit);
 
-        // something went wrong
-        if(res == -1)
-            return null;
-
         return new String(buffer, charset);
     }
 
@@ -120,9 +111,10 @@ public class Client
      * @param buffer - buffer to read data from
      * @param offset - where to start from in the buffer
      * @param len - number of bytes to write
-     * @return number of bytes actually written, -1 on error
+     * @return number of bytes actually written
+     * @throws IOException on communication error
      */
-    public int writeBytes(byte[] buffer, int offset, int len)
+    public int writeBytes(byte[] buffer, int offset, int len) throws IOException
     {
         return layer.tryWrite(buffer, offset, len);
     }
@@ -130,42 +122,39 @@ public class Client
     /**
      * Attempt to write a packet
      * @param pkt - packet to write
-     * @return true on success, false on error
+     * @throws IOException on communication error
      */
-    public boolean writePacket(Packet pkt)
+    public void writePacket(Packet pkt) throws IOException
     {
-        return layer.forceWrite(pkt.data, 0, pkt.data.length, quit) != -1;
+        layer.forceWrite(pkt.data, 0, pkt.data.length, quit);
     }
 
     /**
      * Write an integer to the communication layer
-     * @return true on success, false otherwise
+     * @throws IOException on communication error
      */
-    public boolean writeInt(int num)
+    public void writeInt(int num) throws IOException
     {
         ByteBuffer bb = ByteBuffer.allocate(4);
         bb.putInt(num);
 
-        return layer.forceWrite(bb.array(), 0, bb.array().length, quit) != -1;
+        layer.forceWrite(bb.array(), 0, bb.array().length, quit);
     }
 
     /**
      * Write a string to the communication layer
      * @param s - string to write
      * @param charset - charset for encoding
-     * @return true on success, false otherwise
+     * @throws IOException on communication error
      */
-    public boolean writeString(String s, Charset charset)
+    public void writeString(String s, Charset charset) throws IOException
     {
         byte[] buffer = s.getBytes(charset);
-        boolean res = writeInt(buffer.length);
+        writeInt(buffer.length);
 
-        if(!res)
-            return false;
-
-        return layer.forceWrite(buffer, 0, buffer.length, quit) != -1;
+        layer.forceWrite(buffer, 0, buffer.length, quit);
     }
-    
+
     /**
      * Close the underlying client
      */

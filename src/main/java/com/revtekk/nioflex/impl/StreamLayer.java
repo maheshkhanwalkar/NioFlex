@@ -16,90 +16,50 @@ public class StreamLayer implements CommLayer
     }
 
     @Override
-    public int tryRead(byte[] buffer, int offset, int len)
+    public int tryRead(byte[] buffer, int offset, int len) throws IOException
     {
-        try
-        {
-            ByteBuffer bb = ByteBuffer.wrap(buffer, offset, len);
-            return channel.read(bb);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            return -1;
-        }
+        ByteBuffer bb = ByteBuffer.wrap(buffer, offset, len);
+        return channel.read(bb);
     }
 
     @Override
-    public int forceRead(byte[] buffer, int offset, int len, AtomicBoolean quit)
+    public int forceRead(byte[] buffer, int offset, int len, AtomicBoolean quit) throws IOException
     {
-        try
+
+        ByteBuffer bb = ByteBuffer.wrap(buffer, offset, len);
+        int amt = 0;
+
+        // force read 'len' bytes into the buffer
+        while(amt < len && !quit.get())
         {
-            ByteBuffer bb = ByteBuffer.wrap(buffer, offset, len);
-            int amt = 0;
+            int res = channel.read(bb);
 
-            // force read 'len' bytes into the buffer
-            while(amt < len && !quit.get())
-            {
-                int res = channel.read(bb);
+            if(res == -1)
+                return -1;
 
-                if(res == -1)
-                    return -1;
-
-                amt += res;
-            }
-
-            return amt == len ? amt : -1;
+            amt += res;
         }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            return -1;
-        }
+
+        return amt == len ? amt : -1;
     }
 
     @Override
-    public int tryWrite(byte[] buffer, int offset, int len)
+    public int tryWrite(byte[] buffer, int offset, int len) throws IOException
     {
-        try
-        {
-            ByteBuffer bb = ByteBuffer.wrap(buffer, offset, len);
-            return channel.write(bb);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            return -1;
-        }
+        ByteBuffer bb = ByteBuffer.wrap(buffer, offset, len);
+        return channel.write(bb);
     }
 
     @Override
-    public int forceWrite(byte[] buffer, int offset, int len, AtomicBoolean quit)
+    public void forceWrite(byte[] buffer, int offset, int len, AtomicBoolean quit) throws IOException
     {
-        try
-        {
-            ByteBuffer bb = ByteBuffer.wrap(buffer, offset, len);
+        ByteBuffer bb = ByteBuffer.wrap(buffer, offset, len);
+        int amt = 0;
 
-            int amt = 0;
+        // force write 'len' bytes to the channel
+        while(amt < len && !quit.get())
+            amt += channel.write(bb);
 
-            // force write 'len' bytes to the channel
-            while(amt < len && !quit.get())
-            {
-                int res = channel.write(bb);
-
-                if(res == -1)
-                    return -1;
-
-                amt += res;
-            }
-
-            return amt == len ? amt : -1;
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            return -1;
-        }
     }
 
     @Override

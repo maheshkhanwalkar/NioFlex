@@ -12,9 +12,10 @@ public interface CommLayer
      * @param buffer - buffer to store data in
      * @param offset - where to start from in the buffer
      * @param len - number of bytes to read
-     * @return number of bytes actually read, -1 on error
+     * @return number of bytes actually read
+     * @throws IOException propagated from the underlying layer
      */
-    int tryRead(byte[] buffer, int offset, int len);
+    int tryRead(byte[] buffer, int offset, int len) throws IOException;
 
     /**
      * Forcibly read a certain number of bytes and store it within a
@@ -24,9 +25,10 @@ public interface CommLayer
      * @param offset - where to start from in the buffer
      * @param len - number of bytes to read
      * @param quit - give up on the read, if set to true
-     * @return 'len' on success, -1 on failure
+     * @return 'len' on success
+     * @throws IOException propagated from the underlying layer
      */
-    int forceRead(byte[] buffer, int offset, int len, AtomicBoolean quit);
+    int forceRead(byte[] buffer, int offset, int len, AtomicBoolean quit) throws IOException;
 
     /**
      * Attempt to write a certain number of bytes sourced from a
@@ -35,9 +37,10 @@ public interface CommLayer
      * @param buffer - buffer to read data from
      * @param offset - where to start from in the buffer
      * @param len - number of bytes to write
-     * @return number of bytes actually written, -1 on error
+     * @return number of bytes actually written
+     * @throws IOException propagated from the underlying layer
      */
-    int tryWrite(byte[] buffer, int offset, int len);
+    int tryWrite(byte[] buffer, int offset, int len) throws IOException;
 
     /**
      * Forcibly write a certain number of bytes sourced from a
@@ -47,12 +50,13 @@ public interface CommLayer
      * @param offset - where to start from in the buffer
      * @param len - number of bytes to write
      * @param quit - give up on the write, if set to true
-     * @return 'len' on success, -1 on error
+     * @throws IOException propagated from the underlying layer
      */
-    int forceWrite(byte[] buffer, int offset, int len, AtomicBoolean quit);
+    void forceWrite(byte[] buffer, int offset, int len, AtomicBoolean quit) throws IOException;
 
     /**
      * Close the communication layer
+     * @throws IOException propagated from the underlying layer
      */
     void close() throws IOException;
 }

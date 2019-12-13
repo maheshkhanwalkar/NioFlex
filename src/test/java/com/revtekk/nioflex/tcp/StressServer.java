@@ -31,11 +31,19 @@ public class StressServer
             @Override
             public boolean onRead(Client client)
             {
-                byte[] buffer = new byte[BUFFER_SIZE];
-                int res = client.readBytes(buffer, 0, buffer.length);
+                try
+                {
+                    byte[] buffer = new byte[BUFFER_SIZE];
+                    int res = client.readBytes(buffer, 0, buffer.length);
 
-                System.out.println(res);
-                return res != -1;
+                    System.out.println(res);
+                    return res != -1;
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                    return false;
+                }
             }
         };
 

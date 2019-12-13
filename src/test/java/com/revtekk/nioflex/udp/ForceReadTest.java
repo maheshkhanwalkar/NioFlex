@@ -30,15 +30,16 @@ public class ForceReadTest
             @Override
             public boolean onRead(Client client)
             {
-                Packet pkt = client.readPacket(PKT_SIZE);
-
-                if(pkt == null)
+                try
                 {
-                    System.err.println("Something failed (or quit was asserted)");
+                    Packet pkt = client.readPacket(PKT_SIZE);
+                    return true;
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
                     return false;
                 }
-
-                return true;
             }
         };
 
