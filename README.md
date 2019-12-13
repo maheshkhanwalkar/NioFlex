@@ -10,6 +10,8 @@ The following list are currently planned Feature Specifications, some of which a
 which will be coming soon.
 
 | FS       | Description     | Branch   | Release   | Completed |
-| :------: | :-------------: | :------: | :-------: | :-------: |
-| [FS-01](https://gist.github.com/maheshkhanwalkar/9640e753dbfb1281bba92088e2ed88c4) | API redesign    | [api-changes](https://github.com/maheshkhanwalkar/NioFlex/tree/api-changes) | v1.0 | No |
-
+| :------ | :------------- | :------ | :-------: | :-------: |
+| [FS-0] | API redesign    | [api-changes](https://github.com/maheshkhanwalkar/NioFlex/tree/api-changes) | v1.0 | Yes |
+| [FS-1] | TCP support | [tcp](https://github.com/maheshkhanwalkar/NioFlex/tree/tcp) | v1.0 | Yes |
+| [FS-2] | UDP support | [udp](https://github.com/maheshkhanwalkar/NioFlex/tree/udp) | v1.0 | Yes |
+| [FS-3] | TLS support | [TBD]           | v2.0 | No |

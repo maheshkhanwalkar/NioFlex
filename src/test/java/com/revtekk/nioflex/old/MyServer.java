@@ -1,6 +1,6 @@
-package com.revtekk.nioflex;
+package com.revtekk.nioflex.old;
 
-import com.revtekk.nioflex.utils.SocketUtil;
+import com.revtekk.nioflex.old.utils.SocketUtil;
 
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
