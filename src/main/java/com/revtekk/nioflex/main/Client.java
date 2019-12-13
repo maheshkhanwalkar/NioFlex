@@ -4,6 +4,8 @@ import com.revtekk.nioflex.impl.CommLayer;
 import com.revtekk.nioflex.util.Packet;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Client
@@ -71,6 +73,47 @@ public class Client
     }
 
     /**
+     * Read an integer from the communication layer
+     * @return the integer
+     */
+    public int readInt()
+    {
+        byte[] buffer = new byte[4];
+        int res = layer.forceRead(buffer, 0, buffer.length, quit);
+
+        // something went wrong
+        // FIXME! This is potentially undetectable -- needs to throw exceptions
+        if(res == -1)
+            return -1;
+
+        return ByteBuffer.wrap(buffer).getInt();
+    }
+
+    /**
+     * Read a string from the communication layer
+     * @param charset - encoding charset
+     * @return the string, null on error
+     */
+    public String readString(Charset charset)
+    {
+        int size = readInt();
+
+        // TODO have a configurable upper-bound as well on this, to prevent malicious
+        //  clients from specifying very large buffer sizes
+        if(size < 0)
+            return null;
+
+        byte[] buffer = new byte[size];
+        int res = layer.forceRead(buffer, 0, buffer.length, quit);
+
+        // something went wrong
+        if(res == -1)
+            return null;
+
+        return new String(buffer, charset);
+    }
+
+    /**
      * Attempt to write a certain number of bytes sourced from a
      * user-provided buffer
      *
@@ -94,6 +137,35 @@ public class Client
         return layer.forceWrite(pkt.data, 0, pkt.data.length, quit) != -1;
     }
 
+    /**
+     * Write an integer to the communication layer
+     * @return true on success, false otherwise
+     */
+    public boolean writeInt(int num)
+    {
+        ByteBuffer bb = ByteBuffer.allocate(4);
+        bb.putInt(num);
+
+        return layer.forceWrite(bb.array(), 0, bb.array().length, quit) != -1;
+    }
+
+    /**
+     * Write a string to the communication layer
+     * @param s - string to write
+     * @param charset - charset for encoding
+     * @return true on success, false otherwise
+     */
+    public boolean writeString(String s, Charset charset)
+    {
+        byte[] buffer = s.getBytes(charset);
+        boolean res = writeInt(buffer.length);
+
+        if(!res)
+            return false;
+
+        return layer.forceWrite(buffer, 0, buffer.length, quit) != -1;
+    }
+    
     /**
      * Close the underlying client
      */
