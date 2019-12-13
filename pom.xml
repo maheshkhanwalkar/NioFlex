@@ -6,7 +6,7 @@
 
     <groupId>com.revtekk</groupId>
     <artifactId>nioflex</artifactId>
-    <version>0.20</version>
+    <version>1.0</version>
 
     <name>NioFlex</name>
     <description>Flexible NIO Server Building-Blocks for Java</description>
