@@ -15,4 +15,4 @@ target/
 # Gradle
 .gradle/
 gradle/
-gradlew*
+gradlew.bat
